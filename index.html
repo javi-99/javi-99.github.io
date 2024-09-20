@@ -80,6 +80,8 @@
     </style>
 </head>
 
+
+
 <body>
     <div id='header'>
         <div class='container'>
@@ -123,7 +125,37 @@
             </div>
         </div>
     </div>
+    
+    <!-- Logo Image -->
+    <div class="logo-container">
+        <img src="imgs/Logo-IIT_CaFoscari.png" alt="Organization Logo 1">
+        <img src="imgs/pavis_logo.jpeg" alt="Organization Logo 2">
+        <img src="imgs/Unige-logo.png" alt="Organization Logo 3">
+    </div>
 
+    <style>
+        /* Ensure the container for logos is positioned at the top-right corner */
+        .logo-container {
+            position: absolute;  /* Absolute positioning relative to the page */
+            top: 50px;           /* Distance from the top of the page */
+            right: 50px;         /* Distance from the right of the page */
+            z-index: 1000;        /* Ensure the logos are on top of other content */
+            display: flex;       /* Use flexbox to arrange items */
+            flex-direction: column; /* Arrange logos in a column */
+            align-items: center; /* Center logos horizontally */
+        }
+
+        /* Style for the logos */
+        .logo-container img {
+            max-width: 150px;    /* Control the size of the logos */
+            margin-bottom: 15px; /* Add spacing between the logos vertically */
+        }
+
+        /* Remove the margin from the last logo */
+        .logo-container img:last-child {
+            margin-bottom: 0;
+        }
+    </style>
 
     <div class='container'>
         <div class='row vspace-top'>
@@ -131,7 +163,7 @@
                 <h1>Bio</h1>
                 <p>
                 Hi,</br>
-I am a Postdoctoral Researcher currently working on 3D reconstruction using robotic manipulators at <a href="https://ccht.iit.it/"> CCHT, IIT, Italy.</a> I completed my PhD at the PAVIS Lab, IIT, where I specialized in 3D object detection and multimodal fusion for enhanced 3D scene perception.
+I am a Postdoctoral Researcher currently working on 3D reconstruction using robotic manipulators at <a href="https://ccht.iit.it/"> CCHT, IIT, Italy.</a> I completed my PhD at the <a href="https://pavis.iit.it/"> PAVIS Lab , IIT, </a> where I specialized in 3D object detection and multimodal fusion for enhanced 3D scene perception.
 I'm always open to collaboration on research and projects that align with mutual goals. Feel free to reach out.    
                 </p>
 
