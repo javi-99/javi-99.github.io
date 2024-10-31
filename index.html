@@ -1,417 +1,302 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Javed Ahmad</title>
-
-    <!-- Meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom Styles -->
+    <title>Javed Ahmad</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-          body {
-            font-family: Roboto, 'sans-serif';
-            font-size: 16px;
-            background-color: #FFFFFF;
-            color: #4F6071;
-          }
-          h1 {
-              font-weight: 300;
-              font-size: 2rem;
-          }
-          #header {
-            background-color: #f4f4f4;
-            /*background-color: #FFFFFF;*/
-            display: flex;
-            align-items: flex-end;
-            padding-top:60px;
-            padding-bottom:60px;
-          }
-          #footer {
-            background-color: #FFFFFF;
-            padding:60px;
-          }
-          #portrait {
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        #header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+        }
+        #header img {
             border: 3px solid white;
-          }
-          #header-text {
-            margin-top: 60px;
-            margin-left: 220px;
-          }
-          #header-text-name {
-            font-size: 40px;
-          }
-          #header-text-title {
-              font-size: 17px;
-          }
-          #header-text-affiliation {
-              font-size: 17px;
-              margin-top: 10px;
-          }
-          #header-text-email {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        #header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-top: 20px;
+        }
+        #header h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+        #header p {
+            font-size: 1rem;
             margin-top: 10px;
-            font-size: 17px;
-            font-style: italic;
-          }
-          .header-text-desc {
-            font-size: 20px;
-          }
-          .vspace-top {
-            margin-top: 30px;
-          }
-          .vspace-top-news {
-              margin-top: 15px;
-          }
-          .paper-image {
-            width: 400px;
-          }
-          .news-date {
-              font-weight: bold;
-          }
-          .paper-title {
+        }
+        #header a {
+            color: #ffc107;
+        }
+        #header a:hover {
+            text-decoration: underline;
+        }
+        #header .social-links a {
+            margin: 0 10px;
+            color: #ffc107;
+        }
+        #header .social-links a:hover {
+            color: #ffffff;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .logo-container img {
+            max-width: 150px;
+            margin: 0 10px;
+        }
+        .content-section {
+            padding: 60px 0;
+        }
+        .content-section h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .news-bar {
+            background-color: #ffc107;
+            color: #343a40;
+            padding: 20px 0;
+            text-align: left;
             font-weight: bold;
-          }
-          .paper-authors {
-            font-style: italic;
-          }
+            font-size: 1.2rem;
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+        .news-bar .news-items {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            animation: scrollNews 20s linear infinite;
+        }
+        .news-items div {
+            font-size: 14px;  /* Adjust this to make text slightly smaller */
+            font-weight: normal;  /* Ensures that main text is not bold */
+        }
 
-
+        .news-items .date {
+            font-weight: bold;  /* Makes the date bold */
+            font-size: 16px;  /* Keeps date font slightly larger */
+        }
+        @keyframes scrollNews {
+            0% { top: 100%; }
+            100% { top: -100%; }
+        }
+        .publication-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .publication-item img, .publication-item video {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        .publication-item img:hover, .publication-item video:hover {
+            transform: scale(1.8);
+            position: relative;
+            z-index: 10;
+        }
+        .publication-item img:hover::after, .publication-item video:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        #footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 30px 0;
+            text-align: center;
+        }
+        #footer a {
+            color: #ffc107;
+        }
+        #footer a:hover {
+            text-decoration: underline;
+        }
         #sidebar {
-        position: absolute;
-        top: 27%;
-        right: 20px;
-        width: 200px;
-        background-color: #f4f4f4;
-        padding: 15px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        font-size: 0.7em;
-        color: #4F6071;
-    }
+            position: fixed;
+            top: 20%;
+            right: 20px;
+            width: 250px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+            color: #343a40;
+        }
     </style>
-
 </head>
-
-
-
 <body>
-    <div id='header'>
-        <div class='container'>
-            <div class='row'>
-                <div class="col-sm-3 offset-sm-1">
-                    <img src='imgs/portrait_javed.png' class='img-fluid' id='portrait'>
-                </div>
-
-                <div class="col">
-                  <div id='header-text-name'>
-                      Javed Ahmad
-                  </div>
-                    <div id='header-text-title'>
-                        PostDoc. Researcher </br>
-                        <a href="https://ccht.iit.it/">Center for Cultural Heritage Technology (CCHT)</a> </br>
-							at <a href="https://www.iit.it/it/home">Istituto Italiano di Tecnologia (IIT) , Venice, Italy </a> </br>
-                        </br>
-                    <div class='header-text-title'>
-                        <span style="font-weight: bold; font-size: 1.2em;">Research Interests:</span> </br>
-                    </div>
-                    <ul>
-                        <li>3D Computer Vision & Deep Learning </br>
-                        <li>Multimodal 3D Scene Perception </br>
-                        <li>Robotic Manipulations and 3D Reconstruction
-                    </ul>
-                    </div>
-                  <div id='header-text-email'>
-                        javed.ahmad (at) iit (dot) it </br>
-                        javed.sial91 (at) gmail (dot) com
-                  </div>
-                  <br><br>
-                  <div class="center">
-                    <a href="https://github.com/javi-99"> GitHub </a> &ensp;/&ensp;
-                    <a href="https://scholar.google.com/citations?user=FSBvCO4AAAAJ&hl=en"> Google Scholar </a> &ensp;/&ensp;
-                    <a href="https://linkedin.com/in/javed-ahmad-4692384a"> LinkedIn </a> &ensp;/&ensp;
-                    <a href="https://twitter.com/javedsial91"> Twitter </a> &ensp;/&ensp;
-                    <!--<a href="https://sigmoid.social/@vsitzmann">[Mastodon]</a> -->
-                    <a href="docs/cv_javed_ahmad.pdf"> Download CV </a>
-                  </div>
-
-                </div>
+    <div id="header">
+        <img src="imgs/portrait_javed.png" alt="Javed Ahmad">
+        <h1>Javed Ahmad</h1>
+        <h2>PostDoc. Researcher</h2>
+        <p>
+            <a href="https://ccht.iit.it/">Center for Cultural Heritage Technology (CCHT)</a><br>
+            at <a href="https://www.iit.it/it/home">Istituto Italiano di Tecnologia (IIT), Venice, Italy</a>
+        </p>
+        <p>
+            <strong>Research Interests:</strong>
+            <div>
+                3D Computer Vision & Deep Learning<br>
+                Multimodal 3D Scene Perception<br>
+                Robotic Manipulations and 3D Reconstruction
             </div>
+        </p>
+        <p>
+            <strong>Email:</strong><br>
+            javed.ahmad (at) iit (dot) it<br>
+            javed.sial91 (at) gmail (dot) com
+        </p>
+        <div class="social-links">
+            <a href="https://github.com/javi-99">GitHub</a>
+            <a href="https://scholar.google.com/citations?user=FSBvCO4AAAAJ&hl=en">Google Scholar</a>
+            <a href="https://linkedin.com/in/javed-ahmad-4692384a">LinkedIn</a>
+            <a href="https://twitter.com/javedsial91">Twitter</a>
+            <a href="docs/cv_javed_ahmad.pdf">Download CV</a>
         </div>
     </div>
-    
-    <!-- Logo Image -->
+
     <div class="logo-container">
         <img src="imgs/Logo-IIT_CaFoscari.png" alt="Organization Logo 1">
         <img src="imgs/pavis_logo.jpeg" alt="Organization Logo 2">
         <img src="imgs/Unige-logo.png" alt="Organization Logo 3">
     </div>
 
-    <style>
-        /* Ensure the container for logos is positioned at the top-right corner */
-        .logo-container {
-            position: absolute;  /* Absolute positioning relative to the page */
-            top: 50px;           /* Distance from the top of the page */
-            right: 50px;         /* Distance from the right of the page */
-            z-index: 1000;        /* Ensure the logos are on top of other content */
-            display: flex;       /* Use flexbox to arrange items */
-            flex-direction: column; /* Arrange logos in a column */
-            align-items: center; /* Center logos horizontally */
-        }
+    <div class="news-bar">
+        <div class="news-items">
+            <div><span class="date">September 2024:</span> We presented "AAPOE: Automated Artifacts Position and Orientation Estimation in cultural Heritage" at IEEE/ASME MESA 2024</div>
+            <div><span class="date">November 2023:</span> The preprint of my recent work: "mmFUSION: Multimodal Fusion for 3D object detection" is available on arXiv</div>
+            <div><span class="date">July 2023:</span> I am thrilled to announce that I will be joining ICVSS summer school at Catania, Sicily</div>
+            <div><span class="date">January 2023:</span> Our journal paper "Fill in the blank for fashion complementary outfit product Retrieval: VISUM summer school competition" has been published</div>
+            <div><span class="date">May 2022:</span> I attended ICIAP conference at Lecce and presented my paper</div>
+            <div><span class="date">May 2021:</span> My Team "Json" won the project competition "Fashion Complementary Outfit Product Retrieval" among all participants at VISUM summer school</div>
+            <div><span class="date">July 2020:</span> My Team "3-2-1-D Band" won unconference project idea competition among all participants at EEML summer school</div>
+        </div>
+    </div>
 
-        /* Style for the logos */
-        .logo-container img {
-            max-width: 150px;    /* Control the size of the logos */
-            margin-bottom: 15px; /* Add spacing between the logos vertically */
-        }
+    <div class="container content-section">
+        <h1>Bio</h1>
+        <p>
+            Hi,<br>
+            I am a Postdoctoral Researcher currently working on 3D reconstruction using robotic manipulators at <a href="https://ccht.iit.it/">CCHT, IIT, Italy.</a> I completed my PhD at the <a href="https://pavis.iit.it/">PAVIS Lab, IIT,</a> where I specialized in 3D object detection and multimodal fusion for enhanced 3D scene perception.
+            I'm always open to collaboration on research and projects that align with mutual goals. Feel free to reach out.
+        </p>
+    </div>
 
-        /* Remove the margin from the last logo */
-        .logo-container img:last-child {
-            margin-bottom: 0;
-        }
-    </style>
-
-    <div class='container'>
-        <div class='row vspace-top'>
-            <div class='col offset-sm-1'>
-                <h1>Bio</h1>
-                <p>
-                Hi,</br>
-I am a Postdoctoral Researcher currently working on 3D reconstruction using robotic manipulators at <a href="https://ccht.iit.it/"> CCHT, IIT, Italy.</a> I completed my PhD at the <a href="https://pavis.iit.it/"> PAVIS Lab , IIT, </a> where I specialized in 3D object detection and multimodal fusion for enhanced 3D scene perception.
-I'm always open to collaboration on research and projects that align with mutual goals. Feel free to reach out.    
-                </p>
-
-<!--                <h1>Looking for graduate students!</h1>-->
-<!--                <p>-->
-<!--                    I am looking for graduate students to join my lab at MIT in July 2023. If you want to push what's-->
-<!--                    possible with neural scene representations, inverse graphics and neural rendering-->
-<!--                    and apply them to problems across computer vision, graphics, and robotics, please apply-->
-<!--                    <a href="https://gradapply.mit.edu/eecs/apply/login/">here</a> - -->
-<!--                    deadline is December 15th 2022!-->
-<!--                </p>-->
-
-                <div class='vspace-top'>
-                    <h1>News</h1>
-                </div> 
-                <!--    &lt;!&ndash;- List of news -&#45;&#45;!> -->
-                <div class='row vspace-top-news'>
-                    <div class="col-sm-2 news-date">
-                        September 2024
-                    </div>
-                    <div class="col">
-                        We presented "AAPOE: Automated Artifacts Position and Orientation 
-                        Estimation in cultural Heritage" at   <a href="https://mesa2024.org/final-programme/"> IEEE/ASME MESA 2024 </a> 
+    <div class="container content-section">
+        <h1>Publications</h1>
+        <div class="publication-item">
+            <div class="row">
+                <div class="col-md-4">
+                    <video playsinline autoplay loop muted>
+                        <source src="imgs/AAPOE_teaser.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-md-8">
+                    <div class="title">AAPOE: Automated Artifacts Positions and Orientations Estimation in Cultural Heritage</div>
+                    <div class="date">IEEE/ASME MESA 2024</div>
+                    <div class="authors"><u>Javed Ahmad</u>, et al.</div>
+                    <div>
+                        <a href="https://ieeexplore.ieee.org/document/10704902">[Paper]</a>
+                        <a href="https://drive.google.com/file/d/1sH40aj5_DSdPzKM-3Iiiy_OLRj1Dwrjh/view?usp=drive_link">[Teaser]</a>
+                        <a href="https://docs.google.com/presentation/d/1M0Ux4FAmOuOk3rnylouWeYdZtPPxR-fE/edit?usp=sharing&ouid=116365879728607902406&rtpof=true&sd=true">[Presentation]</a>
                     </div>
                 </div>
-
-                <div class='row vspace-top-news'>
-                    <div class="col-sm-2 news-date">
-                        November 2023
-                    </div>
-                    <div class="col">
-                        The preprint of My recent work: "mmFUSION:Multimodal Fusion for 3D object detection" is availeble on <a href="https://arxiv.org/abs/2311.04058"> arXiv </a> 
+            </div>
+        </div>
+        <div class="publication-item">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="imgs/mmFUSION.png" class="img-fluid" alt="mmFUSION">
+                </div>
+                <div class="col-md-8">
+                    <div class="title">mmFUSION: Multi-modal Fusion for 3D Objects Detection</div>
+                    <div class="date">arXiv (2023)</div>
+                    <div class="authors"><u>Javed Ahmad</u>, Alessio Del Bue</div>
+                    <div>
+                        <a href="https://arxiv.org/abs/2311.04058">[Paper]</a>
+                        <a href="https://docs.google.com/presentation/d/14Pi3Se1FFHXG2wP3QOKE09P9Vxhoicec/edit?usp=sharing&ouid=116365879728607902406&rtpof=true&sd=true">[Presentation]</a>
+                        Code can be requested through emailing me
                     </div>
                 </div>
-                <div class='row vspace-top-news'>
-                    <div class="col-sm-2 news-date">
-                        July 2023
+            </div>
+        </div>
+        <div class="publication-item">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="imgs/product_retrieval.png" class="img-fluid" alt="Product Retrieval">
+                </div>
+                <div class="col-md-8">
+                    <div class="title">Fill in the blank for fashion complementary outfit product retrieval: VISUM summer school competition</div>
+                    <div class="date">Machine Vision and Applications (2023)</div>
+                    <div class="authors">
+                        Eduardo Castro, Pedro M. Ferreira, Ana Rebelo, Isabel Rio-Torto, Leonardo Capozzi, Mafalda Falcão Ferreira, Tiago Gonçalves, Tomé Albuquerque,
+                        Wilson Silva, Carolina Afonso, Ricardo Gamelas Sousa, Claudio Cimarelli, Nadia Daoudi, Gabriel Moreira, Hsiu-yu Yang, Ingrid Hrga,
+                        <u>Javed Ahmad</u>, Monish Keswani, Sofia Beco
                     </div>
-                    <div class="col">
-                        I am thrilled to announce that I will be joining ICVSS summer school at Catania, Sicily
+                    <div>
+                        <a href="https://link.springer.com/article/10.1007/s00138-022-01359-x">[Paper]</a>
+                        <a href="https://github.com/visum-summerschool/visum-competition2021">[Code]</a>
                     </div>
                 </div>
-                
-                <div class='row vspace-top-news'>
-                    <div class="col-sm-2 news-date">
-                        January 2023
-                    </div>
-                    <div class="col">
-                        Our journal paper "Fill in the blank for fashion complementary outfit product Retrieval:
-                        VISUM summer school competition" has been published
+            </div>
+        </div>
+        <div class="publication-item">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="imgs/iciap2021.png" class="img-fluid" alt="ICIAP 2021">
+                </div>
+                <div class="col-md-8">
+                    <div class="title">Multi-view 3D Objects Localization from Street-Level Scenes</div>
+                    <div class="date">ICIAP (2022)</div>
+                    <div class="authors"><u>Javed Ahmad</u>, Matteo Toso, Matto Taiana, Stuart James, Alessio Del Bue</div>
+                    <div>
+                        <a href="https://link.springer.com/chapter/10.1007/978-3-031-06430-2_8">[Paper]</a>
+                        <a href="https://github.com/javi-99/Multi-view-3D-Objects-Localization-from-Street-level-Scenes">[Code]</a>
+                        <a href="https://docs.google.com/presentation/d/1FQcilkWd2onnH_whNc4Kb-wAGKRRF06R/edit?usp=sharing&ouid=116365879728607902406&rtpof=true&sd=true">[Presentation]</a>
                     </div>
                 </div>
-
-                <div class='row vspace-top-news'>
-                    <div class="col-sm-2 news-date">
-                        May 2022
-                    </div>
-                    <div class="col">
-                        I attended ICIAP conference at Lecce and presented my paper
-                    </div>
-                </div>
-
-                <div class='row vspace-top-news'>
-                    <div class="col-sm-2 news-date">
-                        May 2021
-                    </div>
-                    <div class="col">
-                        My Team "Json" won the project competition "Fashion Complementary Outfit Product Retrieval" among all participants at VISUM summer school 
-                    </div>
-                </div>
-
-                <div class='row vspace-top-news'>
-                    <div class="col-sm-2 news-date">
-                        July 2020
-                    </div>
-                    <div class="col">
-                        My Team "3-2-1-D Band" won unconference project idea competition among all participants at EEML summer school 
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
-                <!--  List of Publications    -->
-                
-                <div class='vspace-top'>
-                    <h1>Publications</h1>
-                </div>
-
-
-                <div class='row vspace-top'>
-                    <div class="col-sm-3">
-                        <video playsinline="" autoplay="" loop="" preload="" muted="">
-                            <source src="imgs/AAPOE_teaser.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="col">
-                        <div class='paper-title'>
-                            AAPOE: Automated Artifacts Positions and Orientations Estimation in Cultural Heritage
-                        </div>
-                        <div class='paper-desc'>
-			                IEEE/ASME MESA 2024 </br>
-                        </div>
-                        <div class='paper-authors'> 
-                            <u>Javed Ahmad</u>, el al.
-                        </div>
-                        <div>
-                            <a href="https://ieeexplore.ieee.org/document/10704902">[Paper]</a>
-                            <a href="https://drive.google.com/file/d/1sH40aj5_DSdPzKM-3Iiiy_OLRj1Dwrjh/view?usp=drive_link">[Teaser]</a>
-			                <a href="https://docs.google.com/presentation/d/1M0Ux4FAmOuOk3rnylouWeYdZtPPxR-fE/edit?usp=sharing&ouid=116365879728607902406&rtpof=true&sd=true">[Presentation]</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class='row vspace-top'>
-                    <div class="col-sm-3">
-                        <img src='imgs/mmFUSION.png' class='img-fluid'>
-                    </div>
-
-                    <div class="col">
-                        <div class='paper-title'>
-                            mmFUSION: Multi-modal Fusion for 3D Objects Detection
-                        </div>
-                        <div class='paper-desc'>
-			                arXiv (2023) </br>
-                        </div>
-                        <div class='paper-authors'> 
-                            <u>Javed Ahmad</u>, Alessio Del Bue
-                        </div>
-                        <div>
-                            <a href="https://arxiv.org/abs/2311.04058">[paper]</a>
-                            <a href="https://docs.google.com/presentation/d/14Pi3Se1FFHXG2wP3QOKE09P9Vxhoicec/edit?usp=sharing&ouid=116365879728607902406&rtpof=true&sd=true">[Presentation]</a>
-			                Code can be request through emailing to me
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class='row vspace-top'>
-                    <div class="col-sm-3">
-                        <img src='imgs/product_retrieval.png' class='img-fluid'>
-                    </div>
-
-                    <div class="col">
-                        <div class='paper-title'>
-                            Fill in the blank for fashion complementary outfit product retrieval:VISUM summer school competition
-                        </div>
-                        <div class='paper-desc'>
-			                Machine Vision and Applications (2023) </br>
-                            <b>Honorable Mention "My Team: Json Achieved Highest Accuracy"</b>
-                        </div>
-                        <div class='paper-authors'>
-                            Eduardo Castro, Pedro M. Ferreira, Ana Rebelo, Isabel Rio-Torto, Leonardo Capozzi, Mafalda Falcão Ferreira, Tiago Gonçalves, Tomé Albuquerque,
-                            Wilson Silva, Carolina Afonso 2, Ricardo Gamelas Sousa, Claudio Cimarelli, Nadia Daoudi,  Gabriel Moreira,  Hsiu-yu Yang, Ingrid Hrga, 
-                            <u>Javed Ahmad</u>, Monish Keswani, Sofia Beco
-                        </div>
-                        <div>
-                            <a href="https://link.springer.com/article/10.1007/s00138-022-01359-x">[paper]</a>
-			                <a href="https://github.com/visum-summerschool/visum-competition2021">[Code]</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='row vspace-top'>
-                    <div class="col-sm-3">
-                        <img src='imgs/iciap2021.png' class='img-fluid'>
-                    </div>
-
-                    <div class="col">
-                        <div class='paper-title'>
-                            Multi-view 3D Objects Localization from Street-Level Scenes
-                        </div>
-                        <div class='paper-desc'>
-			                ICIAP (2022)</br>
-                            <b>Memex Project: European Union's Horizon 2020 research and innovation programme </b>
-                        </div>
-                        <div class='paper-authors'>
-                            <u>Javed Ahmad</u>, Matteo Toso, Matto Taiana, Stuart James, Alessio Del Bue
-                        </div>
-                        <div>
-                            <a href="https://link.springer.com/chapter/10.1007/978-3-031-06430-2_8">[paper]</a>
-			                <a href="https://github.com/javi-99/Multi-view-3D-Objects-Localization-from-Street-level-Scenes">[Code]</a>
-                            <a href="https://docs.google.com/presentation/d/1FQcilkWd2onnH_whNc4Kb-wAGKRRF06R/edit?usp=sharing&ouid=116365879728607902406&rtpof=true&sd=true">[Presentation]</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <style>
-                    /* Zoom for all videos */
-                    video {
-                        width: 100%;
-                        height: 100%; /* Keeps the aspect ratio */
-                    }
-                    /* Zoom for all images */
-                    img {
-                        width: 100%;
-                        height: 100%; /* Keeps the aspect ratio */
-                    }
-
-                </style>
-
-
-
-
             </div>
         </div>
     </div>
 
+    <div id="footer">
+        <p>&copy; 2023 Javed Ahmad. All rights reserved.</p>
+    </div>
 
-    <div id='footer' class='vspace-top'>
-    <div>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    
     <div id="sidebar">
-        <div class='header-text-title'>
-            <span style="font-weight: bold; font-size: 1.3em;">External Supervision</span> </br>
-        </div>
+        <h3>External Supervision</h3>
         <ul>
-            <li><strong>PhD Student:</strong> Touseef Bhatti , Multi-sensor fusion for 3D detection, Dept. of Mathematics, Computer Science, and Engineering, <a href="https://www.hope.ac.uk/">Liverpool Hope University, UK</a> </br>
-            <li> <strong>Master Student:</strong> Faisal Sohail, GCU,FSD, Pak</br>
+            <li><strong>PhD Student:</strong> Touseef Bhatti, Multi-sensor fusion for 3D detection, Dept. of Mathematics, Computer Science, and Engineering, <a href="https://www.hope.ac.uk/">Liverpool Hope University, UK</a></li>
+            <li><strong>Master Student:</strong> Faisal Sohail, GCU, FSD, Pak</li>
         </ul>
     </div>
-</body>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
