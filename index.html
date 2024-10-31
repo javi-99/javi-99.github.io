@@ -49,13 +49,57 @@
         #header .social-links a:hover {
             color: #ffffff;
         }
+
+        #collaborators {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .collaborator-profile {
+            display: inline-block;
+            margin: 20px;
+            width: 200px;
+            color: #343a40;
+        }
+
+        .collaborator-profile img {
+            border: 3px solid #343a40;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+        }
+
+        .collaborator-profile h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        .collaborator-profile p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin: 5px 0;
+        }
+
+        .collaborator-profile .social-links a {
+            margin: 0 5px;
+            color: #007bff;
+        }
+
+        .collaborator-profile .social-links a:hover {
+            color: #0056b3;
+        }
+
+
         .logo-container {
             display: flex;
             justify-content: center;
             margin-top: 20px;
+            margin-bottom: 20px;
         }
         .logo-container img {
-            max-width: 150px;
+            max-width: 180px;
             margin: 0 10px;
         }
         .content-section {
@@ -83,6 +127,9 @@
             position: absolute;
             top: 100%;
             animation: scrollNews 20s linear infinite;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 5px;
         }
         .news-items div {
             font-size: 14px;  /* Adjust this to make text slightly smaller */
@@ -158,12 +205,10 @@
             at <a href="https://www.iit.it/it/home">Istituto Italiano di Tecnologia (IIT), Venice, Italy</a>
         </p>
         <p>
-            <strong>Research Interests:</strong>
-            <div>
+            <strong>Research Interests:</strong><br>
                 3D Computer Vision & Deep Learning<br>
                 Multimodal 3D Scene Perception<br>
                 Robotic Manipulations and 3D Reconstruction
-            </div>
         </p>
         <p>
             <strong>Email:</strong><br>
@@ -185,7 +230,7 @@
         <img src="imgs/Unige-logo.png" alt="Organization Logo 3">
     </div>
 
-    <div class="news-bar">
+    <div class="news-bar" name="News">
         <div class="news-items">
             <div><span class="date">September 2024:</span> We presented "AAPOE: Automated Artifacts Position and Orientation Estimation in cultural Heritage" at IEEE/ASME MESA 2024</div>
             <div><span class="date">November 2023:</span> The preprint of my recent work: "mmFUSION: Multimodal Fusion for 3D object detection" is available on arXiv</div>
@@ -283,17 +328,49 @@
         </div>
     </div>
 
+    <div id="collaborators">
+        <h2>External Collaboration & Supervision</h2>
+        <div class="collaborator-profile">
+            <h3><strong>Collaborator </strong> </h3>
+            <img  src="imgs/adeel_azam.jpeg" alt="Collaborator 1">
+            <h3>Dr. Muhammad Adeel Azam</h3>
+            <p><a href="//www.ucdavis.edu/">University of california Davis,</a> United State</p>
+            <p>3D Recons. in Medical Imageing</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/muhammad-adeel-azam-phd-698365276/">LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=hfESenwAAAAJ&hl=en&oi=ao">Google Scholar</a>
+            </div>
+        </div>
+    
+        <div class="collaborator-profile">
+            <h3><strong>Ph.D Student </strong> </h3>
+            <img src="imgs/Touseef_Yaqoob.jpeg" alt="Collaborator 2">
+            <h3>Touseef Yaqoob</h3>
+            <p><a href="https://www.hope.ac.uk/">Liverpool Hope University </a> United Kingdom</p>
+            <p><strong>PhD Thesis:</strong> Multi-sensor Fusion for 3D Detection </p>
+            <br>
+            <div class="social-links">
+                <a href="https://scholar.google.com/citations?user=a8rnc08AAAAJ&hl=en&oi=ao">Google Scholar</a>
+            </div>
+        </div>
+    
+        <div class="collaborator-profile">
+            <h3><strong>Master Student </strong> </h3>
+            <img src="imgs/faisal_sohail.jpeg" alt="Collaborator 3">
+            <h3>Faisal Sohail</h3>
+            <p><a href="https://gcuf.edu.pk/">Government College University </a> Faisalabad, Pakistan </p>
+            <p><strong>Master Thesis:</strong> Visual Localization with Deep Learning</p>
+            <br>
+            <div class="social-links">
+            </div>
+        </div>
+    </div>
+
     <div id="footer">
         <p>&copy; 2023 Javed Ahmad. All rights reserved.</p>
     </div>
 
-    <div id="sidebar">
-        <h3>External Supervision</h3>
-        <ul>
-            <li><strong>PhD Student:</strong> Touseef Bhatti, Multi-sensor fusion for 3D detection, Dept. of Mathematics, Computer Science, and Engineering, <a href="https://www.hope.ac.uk/">Liverpool Hope University, UK</a></li>
-            <li><strong>Master Student:</strong> Faisal Sohail, GCU, FSD, Pak</li>
-        </ul>
-    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
