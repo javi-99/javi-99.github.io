@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Javed Ahmad</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f8f9fa;
             color: #343a40;
         }
+
+        /* Header */
         #header {
             background-color: #343a40;
             color: #ffffff;
@@ -42,79 +45,31 @@
         #header a:hover {
             text-decoration: underline;
         }
-        #header .social-links a {
+
+        .social-links a {
             margin: 0 10px;
             color: #ffc107;
         }
-        #header .social-links a:hover {
+        .social-links a:hover {
             color: #ffffff;
         }
 
-        #collaborators {
-            background-color: #f8f9fa;
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .collaborator-profile {
-            display: inline-block;
-            margin: 20px;
-            width: 200px;
-            color: #343a40;
-        }
-
-        .collaborator-profile img {
-            border: 3px solid #343a40;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-        }
-
-        .collaborator-profile h3 {
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-top: 10px;
-        }
-
-        .collaborator-profile p {
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin: 5px 0;
-        }
-
-        .collaborator-profile .social-links a {
-            margin: 0 5px;
-            color: #007bff;
-        }
-
-        .collaborator-profile .social-links a:hover {
-            color: #0056b3;
-        }
-
-
+        /* Logos */
         .logo-container {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin: 20px 0 30px 0;
         }
         .logo-container img {
             max-width: 180px;
             margin: 0 10px;
         }
-        .content-section {
-            padding: 60px 0;
-        }
-        .content-section h1 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-align: center;
-        }
+
+        /* News bar */
         .news-bar {
             background-color: #ffc107;
             color: #343a40;
             padding: 20px 0;
-            text-align: left;
             font-weight: bold;
             font-size: 1.2rem;
             height: 100px;
@@ -127,26 +82,33 @@
             position: absolute;
             top: 100%;
             animation: scrollNews 20s linear infinite;
-            margin-top: 5px;
-            margin-bottom: 5px;
             margin-left: 5px;
         }
         .news-items div {
-            font-size: 14px;  /* Adjust this to make text slightly smaller */
-            font-weight: normal;  /* Ensures that main text is not bold */
+            font-size: 14px;
+            font-weight: normal;
         }
-
         .news-items .date {
-            font-weight: bold;  /* Makes the date bold */
-            font-size: 16px;  /* Keeps date font slightly larger */
+            font-weight: bold;
+            font-size: 16px;
         }
         @keyframes scrollNews {
             0% { top: 100%; }
             100% { top: -100%; }
         }
+
+        /* Content Sections */
+        .content-section {
+            padding: 60px 0;
+        }
+        .content-section h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Publications */
         .publication-item {
             margin-bottom: 30px;
-            position: relative;
         }
         .publication-item img, .publication-item video {
             max-width: 100%;
@@ -159,16 +121,8 @@
             position: relative;
             z-index: 10;
         }
-        .publication-item img:hover::after, .publication-item video:hover::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: -1;
-        }
+
+        /* Footer */
         #footer {
             background-color: #343a40;
             color: #ffffff;
@@ -178,102 +132,97 @@
         #footer a {
             color: #ffc107;
         }
-        #footer a:hover {
-            text-decoration: underline;
-        }
-        #sidebar {
-            position: fixed;
-            top: 20%;
-            right: 20px;
-            width: 250px;
-            background-color: #ffffff;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-            font-size: 0.9em;
-            color: #343a40;
-        }
+
     </style>
 </head>
+
 <body>
-    <div id="header">
-        <img src="imgs/portrait_javed.png" alt="Javed Ahmad">
-        <h1>Javed Ahmad</h1>
-        <h2>PostDoc. Researcher</h2>
-        <p>
-            <a href="https://advr.iit.it/">Advanced Robotics (ADVR)</a><br>
-            at <a href="https://www.iit.it/it/home">Istituto Italiano di Tecnologia (IIT), Genova, Italy</a>
-        </p>
-        <p>
-            <strong>Research Interests:</strong><br>
-                3D Computer Vision & Deep Learning<br>
-                Gaussian Splatting based SLAM System<br>
-                Multimodal 3D Scene Perception<br>
-                Robotic Manipulations and 3D Reconstruction
-        </p>
-        <p>
-            <strong>Email:</strong><br>
-            javed.ahmad (at) iit (dot) it<br>
-            javed.sial91 (at) gmail (dot) com
-        </p>
-        <div class="social-links">
-            <a href="https://github.com/javi-99">GitHub</a>
-            <a href="https://scholar.google.com/citations?user=FSBvCO4AAAAJ&hl=en">Google Scholar</a>
-            <a href="https://linkedin.com/in/javed-ahmad-4692384a">LinkedIn</a>
-            <a href="https://twitter.com/javedsial91">Twitter</a>
-            <a href="docs/cv_javed_ahmad.pdf">Download CV</a>
-        </div>
-    </div>
 
+    <!-- ================= HEADER ================= -->
+ <div id="header">
+    <img src="imgs/portrait_javed.png" alt="Javed Ahmad">
+    <h1>Javed Ahmad</h1>
+    <h2>Computer Vision & Robotics Researcher</h2>
+
+    <p>
+        I work at the intersection of <strong>SLAM, 3D mapping</strong>, and 
+        <strong>robotic perception</strong>, developing end-to-end systems for UAVs, 
+        robotic manipulators, and large-scale scene reconstruction. Previously at the 
+        Italian Institute of Technology (ADVR & CCHT), I worked on 
+        <strong>Gaussian Splatting SLAM</strong> and 
+        <strong>autonomous robotic 3D scanning</strong>. 
+        I completed my Ph.D. at <strong>PAVIS–IIT</strong> on multimodal 3D scene perception.
+    </p>
+
+    <p><strong>Research Interests:</strong></p>
+    <ul style="list-style:none; padding:0; font-size:0.95rem; line-height:1.6;">
+        <li>• SLAM & 3D Reconstruction</li>
+        <li>• Neural Scene Representations (NeRF, 3D Gaussian Splatting)</li>
+        <li>• Multimodal 3D Perception (LiDAR–RGB fusion, depth reasoning)</li>
+        <li>• Robotic Manipulation & Autonomous UAV Systems</li>
+    </ul>
+
+    <p><strong>Email:</strong> javed.sial91 (at) gmail (dot) com</p>
+
+    <div class="social-links">
+        <a href="https://github.com/javi-99">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=FSBvCO4AAAAJ&hl=en">Google Scholar</a>
+        <a href="https://linkedin.com/in/javed-ahmad-4692384a">LinkedIn</a>
+        <a href="https://twitter.com/javedsial91">Twitter</a>
+        <a href="docs/cv_javed_ahmad.pdf">Download CV</a>
+    </div>
+</div>
+
+    <!-- ================= LOGOS ================= -->
     <div class="logo-container">
-        <img src="imgs/logo_advr.png" alt="Organization Logo 1">
-        <img src="imgs/Logo-IIT_CaFoscari.png" alt="Organization Logo 2">
-        <!--<img src="imgs/cte_genova_logo.png" alt="Organization Logo 2">-->
-        <img src="imgs/pavis_logo.jpeg" alt="Organization Logo 3">
-        <img src="imgs/Unige-logo.png" alt="Organization Logo 4">
+        <img src="imgs/logo_advr.png" alt="ADVR IIT">
+        <img src="imgs/Logo-IIT_CaFoscari.png" alt="CCHT IIT">
+        <img src="imgs/pavis_logo.jpeg" alt="PAVIS Lab">
+        <img src="imgs/Unige-logo.png" alt="UniGe">
     </div>
 
-    <div class="news-bar" name="News">
+    <!-- ================= NEWS ================= -->
+    <div class="news-bar">
         <div class="news-items">
-            <div><span class="date">September 2024:</span> We presented "AAPOE: Automated Artifacts Position and Orientation Estimation in cultural Heritage" at IEEE/ASME MESA 2024</div>
-            <div><span class="date">November 2023:</span> The preprint of my recent work: "mmFUSION: Multimodal Fusion for 3D object detection" is available on arXiv</div>
-            <div><span class="date">July 2023:</span> I am thrilled to announce that I will be joining ICVSS summer school at Catania, Sicily</div>
-            <div><span class="date">January 2023:</span> Our journal paper "Fill in the blank for fashion complementary outfit product Retrieval: VISUM summer school competition" has been published</div>
-            <div><span class="date">May 2022:</span> I attended ICIAP conference at Lecce and presented my paper</div>
-            <div><span class="date">May 2021:</span> My Team "Json" won the project competition "Fashion Complementary Outfit Product Retrieval" among all participants at VISUM summer school</div>
-            <div><span class="date">July 2020:</span> My Team "3-2-1-D Band" won unconference project idea competition among all participants at EEML summer school</div>
+            <div><span class="date">September 2024:</span> Presented AAPOE at IEEE/ASME MESA 2024.</div>
+            <div><span class="date">November 2023:</span> Released mmFUSION preprint on arXiv.</div>
+            <div><span class="date">July 2023:</span> Attended ICVSS Summer School in Sicily.</div>
+            <div><span class="date">January 2023:</span> Published VISUM competition journal paper.</div>
+            <div><span class="date">May 2022:</span> Presented paper at ICIAP 2022.</div>
+            <div><span class="date">May 2021:</span> Team won VISUM project competition.</div>
+            <div><span class="date">July 2020:</span> Winner of EEML project competition.</div>
         </div>
     </div>
 
+    <!-- ================= PROJECTS ================= -->
     <div class="container content-section">
-        <h1>Bio</h1>
-        <p>
-            Hi,<br>
-            I am a Postdoctoral Researcher currently working on Gaussian Splatting based SLAM system at <a href="https://advr.iit.it/">ADVR, IIT, Genova.</a>.  Previously, I was also Posdoc and worked on 3D scanning/reconstruction of artefacts using robotic manipulators at <a href="https://ccht.iit.it/">CCHT, IIT, Venice.</a> I did my PhD at the <a href="https://pavis.iit.it/">PAVIS Lab, IIT,</a> with Alessio Del Bue, where I specialized in 3D object detection and multimodal fusion for enhanced 3D scene perception.
-            I'm always open to collaboration on research and projects that align with mutual goals. Feel free to reach out.
-        </p>
-    </div>
+        <h1>Projects</h1>
 
-    <div class="container content-section">
-        <h1> Projects</h1>
         <div class="publication-item">
-            <div class="row" >
+            <div class="row">
                 <div class="col-md-4">
-                    <img src="imgs/logo-ufficiale-CTE-GENOVA-01-1-scaled.jpg" class="img-fluid" alt="Cte_genova">
+                    <img src="imgs/logo-ufficiale-CTE-GENOVA-01-1-scaled.jpg" class="img-fluid" alt="CTE Genova">
                 </div>
                 <div class="col-md-8">
-                    <div class="title"> <a href="https://cte.comune.genova.it/"> <strong>CTE-Genova</strong> </a>  </div>
-                    <p>Developing an automated platform for the scanning and digital preservation of cultural heritage artifacts, as part of the Genova-based House of Emerging Technologies project. This system utilizes robotic automation to enable comprehensive 3D scans of valuable objects, supporting their study and preservation.</p> 
-                    <div class="text-decoration">MORE DETAILS WILL BE POSTED AFTER COMPLETION OF PROJECT </div>
+                    <div class="title">
+                        <a href="https://cte.comune.genova.it/"><strong>CTE-Genova</strong></a>
+                    </div>
+                    <p>
+                        Developing an automated platform for 3D scanning and digital preservation of cultural-heritage 
+                        artifacts using robotic automation. The system enables high-fidelity 3D digitization for analysis 
+                        and long-term preservation.
+                    </p> 
+                    <div class="text-muted">More details will be shared after project completion.</div>
                 </div>
-
             </div>
         </div>
-    
-    </div>   
+    </div>
 
+    <!-- ================= PUBLICATIONS ================= -->
     <div class="container content-section">
         <h1>Publications</h1>
+
+        <!-- AAPOE -->
         <div class="publication-item">
             <div class="row">
                 <div class="col-md-4">
@@ -282,47 +231,47 @@
                     </video>
                 </div>
                 <div class="col-md-8">
-                    <div class="title"><strong>AAPOE: Automated Artifacts Positions and Orientations Estimation in Cultural Heritage</strong></div>
+                    <div class="title"><strong>AAPOE: Automated Artifacts Position and Orientation Estimation in Cultural Heritage</strong></div>
                     <div class="date">IEEE/ASME MESA 2024</div>
                     <div class="authors"><u>Javed Ahmad</u>, et al.</div>
                     <div>
                         <a href="https://ieeexplore.ieee.org/document/10704902">[Paper]</a>
-                        <a href="https://drive.google.com/file/d/1sH40aj5_DSdPzKM-3Iiiy_OLRj1Dwrjh/view?usp=drive_link">[Teaser]</a>
-                        <a href="https://docs.google.com/presentation/d/1M0Ux4FAmOuOk3rnylouWeYdZtPPxR-fE/edit?usp=sharing&ouid=116365879728607902406&rtpof=true&sd=true">[Presentation]</a>
+                        <a href="https://drive.google.com/file/d/1sH40aj5_DSdPzKM-3Iiiy_OLRj1Dwrjh/view">[Teaser]</a>
+                        <a href="https://docs.google.com/presentation/d/1M0Ux4FAmOuOk3rnylouWeYdZtPPxR-fE/edit">[Presentation]</a>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- mmFUSION -->
         <div class="publication-item">
             <div class="row">
                 <div class="col-md-4">
                     <img src="imgs/mmFUSION.png" class="img-fluid" alt="mmFUSION">
                 </div>
                 <div class="col-md-8">
-                    <div class="title"> <strong>mmFUSION: Multi-modal Fusion for 3D Objects Detection</strong></div>
-                    <div class="date">arXiv (2023)</div>
+                    <div class="title"><strong>mmFUSION: Multi-modal Fusion for 3D Object Detection</strong></div>
+                    <div class="date">arXiv 2023</div>
                     <div class="authors"><u>Javed Ahmad</u>, Alessio Del Bue</div>
                     <div>
                         <a href="https://arxiv.org/abs/2311.04058">[Paper]</a>
-                        <a href="https://docs.google.com/presentation/d/14Pi3Se1FFHXG2wP3QOKE09P9Vxhoicec/edit?usp=sharing&ouid=116365879728607902406&rtpof=true&sd=true">[Presentation]</a>
-                        Code can be requested through emailing me
+                        <a href="https://docs.google.com/presentation/d/14Pi3Se1FFHXG2wP3QOKE09P9Vxhoicec/edit">[Presentation]</a>
+                        Code available upon request.
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Fashion Retrieval -->
         <div class="publication-item">
             <div class="row">
                 <div class="col-md-4">
                     <img src="imgs/product_retrieval.png" class="img-fluid" alt="Product Retrieval">
                 </div>
                 <div class="col-md-8">
-                    <div class="title"><strong>Fill in the blank for fashion complementary outfit product retrieval: VISUM summer school competition</strong></div>
+                    <div class="title"><strong>Fill in the Blank for Fashion Complementary Outfit Retrieval</strong></div>
                     <div class="date">Machine Vision and Applications (2023)</div>
-                    <div class="authors">
-                        Eduardo Castro, Pedro M. Ferreira, Ana Rebelo, Isabel Rio-Torto, Leonardo Capozzi, Mafalda Falcão Ferreira, Tiago Gonçalves, Tomé Albuquerque,
-                        Wilson Silva, Carolina Afonso, Ricardo Gamelas Sousa, Claudio Cimarelli, Nadia Daoudi, Gabriel Moreira, Hsiu-yu Yang, Ingrid Hrga,
-                        <u>Javed Ahmad</u>, Monish Keswani, Sofia Beco
-                    </div>
+                    <div class="authors">Extensive author list including <u>Javed Ahmad</u></div>
                     <div>
                         <a href="https://link.springer.com/article/10.1007/s00138-022-01359-x">[Paper]</a>
                         <a href="https://github.com/visum-summerschool/visum-competition2021">[Code]</a>
@@ -330,73 +279,32 @@
                 </div>
             </div>
         </div>
+
+        <!-- ICIAP -->
         <div class="publication-item">
             <div class="row">
                 <div class="col-md-4">
                     <img src="imgs/iciap2021.png" class="img-fluid" alt="ICIAP 2021">
                 </div>
                 <div class="col-md-8">
-                    <div class="title"><strong></strong> Multi-view 3D Objects Localization from Street-Level Scenes</div>
-                    <div class="date">ICIAP (2022)</div>
-                    <div class="authors"><u>Javed Ahmad</u>, Matteo Toso, Matto Taiana, Stuart James, Alessio Del Bue</div>
+                    <div class="title"><strong>Multi-view 3D Object Localization from Street-Level Scenes</strong></div>
+                    <div class="date">ICIAP 2022</div>
+                    <div class="authors"><u>Javed Ahmad</u>, Matteo Toso, Matteo Taiana, Stuart James, Alessio Del Bue</div>
                     <div>
                         <a href="https://link.springer.com/chapter/10.1007/978-3-031-06430-2_8">[Paper]</a>
                         <a href="https://github.com/javi-99/Multi-view-3D-Objects-Localization-from-Street-level-Scenes">[Code]</a>
-                        <a href="https://docs.google.com/presentation/d/1FQcilkWd2onnH_whNc4Kb-wAGKRRF06R/edit?usp=sharing&ouid=116365879728607902406&rtpof=true&sd=true">[Presentation]</a>
+                        <a href="https://docs.google.com/presentation/d/1FQcilkWd2onnH_whNc4Kb-wAGKRRF06R/edit">[Presentation]</a>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <!--
-
-    <div id="collaborators">
-        <h2>External Collaboration & Supervision</h2>
-        <div class="collaborator-profile">
-            <h3><strong>Collaborator </strong> </h3>
-            <img  src="imgs/adeel_azam.jpeg" alt="Collaborator 1">
-            <h3>Dr. Muhammad Adeel Azam</h3>
-            <p><a href="//www.ucdavis.edu/">University of california Davis,</a> United State</p>
-            <p>3D Recons. in Medical Imageing</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/muhammad-adeel-azam-phd-698365276/">LinkedIn</a>
-                <a href="https://scholar.google.com/citations?user=hfESenwAAAAJ&hl=en&oi=ao">Google Scholar</a>
-            </div>
-        </div>
-    
-        <div class="collaborator-profile">
-            <h3><strong>Ph.D Student </strong> </h3>
-            <img src="imgs/Touseef_Yaqoob.jpeg" alt="Collaborator 2">
-            <h3>Touseef Yaqoob</h3>
-            <p><a href="https://www.hope.ac.uk/">Liverpool Hope University </a> United Kingdom</p>
-            <p><strong>PhD Thesis:</strong> Multi-sensor Fusion for 3D Detection </p>
-            <br>
-            <div class="social-links">
-                <a href="https://scholar.google.com/citations?user=a8rnc08AAAAJ&hl=en&oi=ao">Google Scholar</a>
-            </div>
-        </div>
-    
-        <div class="collaborator-profile">
-            <h3><strong>Master Student </strong> </h3>
-            <img src="imgs/faisal_sohail.jpeg" alt="Collaborator 3">
-            <h3>Faisal Sohail</h3>
-            <p><a href="https://gcuf.edu.pk/">Government College University </a> Faisalabad, Pakistan </p>
-            <p><strong>Master Thesis:</strong> Visual Localization with Deep Learning</p>
-            <br>
-            <div class="social-links">
-            </div>
-        </div>
-    </div> -->
-
+    <!-- ================= FOOTER ================= -->
     <div id="footer">
-        <p>&copy; 2023 Javed Ahmad. All rights reserved.</p>
+        <p>&copy; 2024 Javed Ahmad. All rights reserved.</p>
     </div>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
