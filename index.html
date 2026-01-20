@@ -13,6 +13,13 @@
 
   <style>
     :root{
+      --blue-main: #0033ff;
+      --blue-muted: rgba(0,51,255,0.75);
+      --blue-dark: #001fa3;
+
+      --nav-bg: #f4f7ff;
+      --nav-border: rgba(10,44,255,0.15);
+
       --bg: #0b0f19;
       --panel: rgba(255,255,255,0.06);
       --panel-2: rgba(255,255,255,0.08);
@@ -32,6 +39,8 @@
       background: radial-gradient(1200px 600px at 15% 0%, rgba(110,231,255,0.15), transparent 55%),
                   radial-gradient(900px 600px at 85% 10%, rgba(255,193,7,0.14), transparent 60%),
                   var(--bg);
+      font-size: 17px;
+      line-height: 1.65;
       color: var(--text);
     }
 
@@ -40,21 +49,31 @@
 
     /* Navbar */
     .navbar{
-      background: rgba(11,15,25,0.55);
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--nav-border);
     }
-    .nav-link{ color: var(--muted) !important; }
-    .nav-link:hover{ color: var(--text) !important; }
+    .navbar i{
+      color: var(--blue-muted);
+    }
+
+    .nav-link{ color: var(--blue-muted) !important;
+      font-weight: 500;}
+    .nav-link:hover{ color: var(--blue-main) !important; }
+    .nav-link.active{
+      color: var(--blue-dark) !important;
+      font-weight: 600;
+    }
 
     /* Hero */
     .hero{
       padding: 92px 0 44px 0;
     }
     .name-brand{
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -0.010em;
+      color: var(--blue-muted);
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.010em;
     }
 
     .hero-card{
@@ -97,8 +116,8 @@
     }
     .hero .subtitle{
       color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.55;
+      font-size: 1.15rem;
+      line-height: 1.6;
     }
     .cta-row a.btn{
       border-radius: 999px;
@@ -124,9 +143,13 @@
       letter-spacing: -0.01em;
       margin-bottom: 14px;
     }
+    html { font-size: 18px; }
+    body { line-height: 1.65; }
     .section-lead{
       color: var(--muted);
       max-width: 78ch;
+      font-size: 1.08rem;
+      line-height: 1.7;
     }
 
     /* Cards */
@@ -151,7 +174,7 @@
       background: rgba(255,255,255,0.06);
       border: 1px solid var(--line);
       color: var(--muted);
-      font-size: 0.86rem;
+      font-size: 0.95rem;
       margin: 0 6px 8px 0;
       white-space: nowrap;
     }
@@ -191,7 +214,7 @@
       background: rgba(255,255,255,0.05);
     }
     .pub-title{ font-weight: 700; }
-    .pub-meta{ color: var(--muted); font-size: 0.95rem; }
+    .pub-meta{ color: var(--muted); font-size: 1.02rem; }
     .pub-links a{ margin-right: 10px; }
 
     /* Experience timeline */
@@ -269,7 +292,88 @@
 
     /* Small tweaks */
     .divider{ border-top: 1px solid var(--line); margin: 22px 0; }
-    .small-muted{ color: var(--muted-2); font-size: 0.95rem; }
+    
+    .small-muted{ 
+      color: var(--muted-2);
+       font-size: 1.0rem;
+       line-height: 1.6;
+      }
+
+
+    /* ===== Vertical Side Nav (Desktop, Blue Theme) ===== */
+    .side-nav{
+      position: fixed;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1100;
+      padding: 12px 10px;
+      border-radius: 18px;
+      background: rgba(244,247,255,0.92);  /* same as top nav */
+      border: 1px solid rgba(10,44,255,0.15);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    }
+
+    .side-link{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--blue-muted);
+      transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .side-link:hover{
+      background: rgba(10,44,255,0.08);
+      color: var(--blue-main);
+      transform: translateX(2px);
+      text-decoration: none;
+    }
+
+    .side-nav .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(10,44,255,0.55);
+      box-shadow: 0 0 0 4px rgba(10,44,255,0.12);
+      flex: 0 0 auto;
+    }
+
+    .side-nav .label{
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    @media (min-width: 992px){
+      body{
+        padding-left: 110px; /* room for the side nav */
+      }
+    }
+    @media (min-width: 992px){
+      .navbar{
+        background: rgba(244,247,255,0.75);
+      }
+    }
+
+    .side-link.active{
+      background: rgba(10,44,255,0.10);
+      color: var(--blue-main);
+      font-weight: 600;
+    }
+
+    .side-link.active .dot{
+      background: var(--blue-main);
+      box-shadow: 0 0 0 4px rgba(10,44,255,0.22);
+    }
+
+
+
+  html { font-size: 18px; }
+  body { line-height: 1.65; }
   </style>
 </head>
 
@@ -870,4 +974,51 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
+<!-- Vertical Side Nav (desktop) -->
+<nav class="side-nav d-none d-lg-block" aria-label="Section navigation">
+  <a class="side-link" href="#top">
+    <span class="dot"></span><span class="label">Top</span>
+  </a>
+  <a class="side-link" href="#build">
+    <span class="dot"></span><span class="label">What I Build</span>
+  </a>
+  <a class="side-link" href="#projects">
+    <span class="dot"></span><span class="label">Flagship Systems</span>
+  </a>
+  <a class="side-link" href="#venture">
+    <span class="dot"></span><span class="label">Venture</span>
+  </a>
+  <a class="side-link" href="#publications">
+    <span class="dot"></span><span class="label">Publications</span>
+  </a>
+  <a class="side-link" href="#background">
+    <span class="dot"></span><span class="label">Background</span>
+  </a>
+  <a class="side-link" href="#contact">
+    <span class="dot"></span><span class="label">Contact</span>
+  </a>
+</nav>
+<script>
+  const sections = ["top","build","projects","venture","publications","background","contact"];
+  const sideLinks = Array.from(document.querySelectorAll(".side-link"));
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        sideLinks.forEach(a => a.classList.remove("active"));
+        const id = e.target.id || "top";
+        const link = sideLinks.find(a => a.getAttribute("href") === "#" + id);
+        if (link) link.classList.add("active");
+      }
+    });
+  }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) obs.observe(el);
+  });
+</script>
+
+
 </html>
