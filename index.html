@@ -5,41 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Javed Ahmad — Robotics & 3D Vision</title>
 
-  <!-- Bootstrap 5 (no jQuery needed) -->
+  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Optional: Bootstrap Icons -->
+  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
     :root{
-      --blue-main: #0033ff;
-      --blue-muted: rgba(0,51,255,0.75);
-      --blue-dark: #001fa3;
-
-      --nav-bg: #f4f7ff;
-      --nav-border: rgba(10,44,255,0.15);
-
       --bg: #0b0f19;
-      --panel: rgba(255,255,255,0.06);
-      --panel-2: rgba(255,255,255,0.08);
       --text: #e8edf7;
       --muted: rgba(232,237,247,0.75);
       --muted-2: rgba(232,237,247,0.60);
       --line: rgba(255,255,255,0.12);
       --brand: #ffc107;
-      --brand-2: #6ee7ff; /* accent for subtle gradient touches */
       --shadow: 0 18px 50px rgba(0,0,0,0.35);
       --radius: 18px;
+
+      /* navbar colors */
+      --nav-bg: rgba(5, 6, 10, 0.98);
+      --nav-border: rgba(255,255,255,0.10);
+
+    }
+    :root{
+    --nav-offset: 90px;  /* adjust if needed */
     }
 
-    html { scroll-behavior: smooth; }
+    /* Make anchor jumps stop below the fixed navbar */
+    section{
+    scroll-margin-top: var(--nav-offset);
+    }
+
+    /* Also cover the top anchor (hero container) */
+    #top{
+    scroll-margin-top: var(--nav-offset);
+    }
+
+    html { scroll-behavior: smooth; font-size: 18px; }
     body{
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 600px at 15% 0%, rgba(110,231,255,0.15), transparent 55%),
-                  radial-gradient(900px 600px at 85% 10%, rgba(255,193,7,0.14), transparent 60%),
-                  var(--bg);
-      font-size: 17px;
+      background:
+        radial-gradient(1200px 600px at 15% 0%, rgba(110,231,255,0.15), transparent 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(255,193,7,0.14), transparent 60%),
+        var(--bg);
       line-height: 1.65;
       color: var(--text);
     }
@@ -47,34 +54,44 @@
     a{ color: var(--brand); text-decoration: none; }
     a:hover{ color: #ffd34d; text-decoration: underline; }
 
-    /* Navbar */
+    /* ===== TOP NAVBAR (keep dark ALWAYS for contrast) ===== */
     .navbar{
-      background: var(--nav-bg);
+      background: var(--nav-bg) !important;
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--nav-border);
     }
-    .navbar i{
-      color: var(--blue-muted);
+
+    .navbar-brand.name-brand{
+      color: #fff !important;
+      font-weight: 900;
+      letter-spacing: -0.015em;
+      font-size: 2.0rem;   /* important: don't use 2.5rem in navbar */
     }
 
-    .nav-link{ color: var(--blue-muted) !important;
-      font-weight: 500;}
-    .nav-link:hover{ color: var(--blue-main) !important; }
+    .nav-link{
+      color: rgba(255,255,255,0.74) !important;
+      font-weight: 500;
+    }
+    .nav-link:hover{
+      color: #ffffff !important;
+      text-decoration: none;
+    }
     .nav-link.active{
-      color: var(--blue-dark) !important;
-      font-weight: 600;
+      color: var(--brand) !important; /* high-contrast active */
+      font-weight: 650;
     }
 
-    /* Hero */
-    .hero{
-      padding: 92px 0 44px 0;
+    .navbar i{ color: rgba(255,255,255,0.78); }
+
+    .navbar .navbar-toggler{
+      border-color: rgba(255,255,255,0.25);
     }
-    .name-brand{
-      color: var(--blue-muted);
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.010em;
+    .navbar .navbar-toggler-icon{
+      filter: brightness(0) invert(1);
     }
+
+    /* ===== HERO ===== */
+    .hero{ padding: 92px 0 44px 0; }
 
     .hero-card{
       background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
@@ -87,8 +104,9 @@
     .hero-card::before{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(600px 300px at 20% 10%, rgba(255,193,7,0.18), transparent 60%),
-                  radial-gradient(520px 280px at 85% 25%, rgba(110,231,255,0.18), transparent 55%);
+      background:
+        radial-gradient(600px 300px at 20% 10%, rgba(255,193,7,0.18), transparent 60%),
+        radial-gradient(520px 280px at 85% 25%, rgba(110,231,255,0.18), transparent 55%);
       pointer-events:none;
       z-index:0;
     }
@@ -101,6 +119,7 @@
       object-fit: cover;
       box-shadow: 0 12px 32px rgba(0,0,0,0.35);
     }
+
     .badge-pill{
       display:inline-flex; align-items:center; gap:8px;
       padding: 8px 12px;
@@ -110,15 +129,14 @@
       color: var(--muted);
       font-size: 0.92rem;
     }
-    .hero h1{
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
+
+    .hero h1{ font-weight: 800; letter-spacing: -0.02em; }
     .hero .subtitle{
       color: var(--muted);
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       line-height: 1.6;
     }
+
     .cta-row a.btn{
       border-radius: 999px;
       padding: 10px 14px;
@@ -136,37 +154,34 @@
     }
     .btn-ghost:hover{ background: rgba(255,255,255,0.10); color: var(--text); text-decoration:none; }
 
-    /* Section styling */
+    /* ===== SECTIONS ===== */
     section{ padding: 56px 0; }
     .section-title{
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: -0.01em;
       margin-bottom: 14px;
     }
-    html { font-size: 18px; }
-    body { line-height: 1.65; }
     .section-lead{
       color: var(--muted);
       max-width: 78ch;
-      font-size: 1.08rem;
+      font-size: 1.06rem;
       line-height: 1.7;
     }
 
-    /* Cards */
+    /* ===== CARDS ===== */
     .glass{
       background: rgba(255,255,255,0.06);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: 0 12px 34px rgba(0,0,0,0.18);
+      transition: transform 0.18s ease, border-color 0.18s ease;
     }
     .glass:hover{
       border-color: rgba(255,255,255,0.18);
       transform: translateY(-2px);
-      transition: 0.18s ease;
     }
     .card-pad{ padding: 18px; }
 
-    /* Tags */
     .tag{
       display:inline-block;
       padding: 6px 10px;
@@ -179,7 +194,6 @@
       white-space: nowrap;
     }
 
-    /* Project media placeholder */
     .media-box{
       border-radius: 14px;
       overflow: hidden;
@@ -202,7 +216,7 @@
       background:
         linear-gradient(135deg, rgba(255,193,7,0.10), rgba(110,231,255,0.10)),
         rgba(255,255,255,0.04);
-      font-weight: 600;
+      font-weight: 650;
       letter-spacing: 0.02em;
     }
 
@@ -213,19 +227,16 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.05);
     }
-    .pub-title{ font-weight: 700; }
+    .pub-title{ font-weight: 800; }
     .pub-meta{ color: var(--muted); font-size: 1.02rem; }
     .pub-links a{ margin-right: 10px; }
 
-    /* Experience timeline */
+    /* Timeline */
     .timeline{
       border-left: 2px solid rgba(255,255,255,0.12);
       padding-left: 18px;
     }
-    .tl-item{
-      margin-bottom: 18px;
-      position: relative;
-    }
+    .tl-item{ margin-bottom: 18px; position: relative; }
     .tl-item::before{
       content:"";
       position:absolute;
@@ -235,53 +246,44 @@
       background: var(--brand);
       box-shadow: 0 0 0 4px rgba(255,193,7,0.15);
     }
-    .tl-role{ font-weight: 700; }
+    .tl-role{ font-weight: 800; }
     .tl-when{ color: var(--muted); font-size: 0.92rem; }
 
-    /* Logos row */
+    /* Logos */
     .logo-strip{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 16px;
     }
-
     .logo-pill{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 14px;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.14);
-    box-shadow: 0 10px 26px rgba(0,0,0,0.18);
-    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-    text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
     }
-
     .logo-pill:hover{
-    transform: translateY(-2px);
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(255,255,255,0.20);
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.20);
     }
-
     .logo-pill img{
-    height: 40px;          /* unified height */
-    width: auto;
-    max-width: 160px;      /* prevents huge wide logos */
-    object-fit: contain;
-    display: block;
-    opacity: 0.92;
+      height: 40px;
+      width: auto;
+      max-width: 160px;
+      object-fit: contain;
+      display: block;
+      opacity: 0.92;
     }
-
-    /* Optional: make all logos slightly “cleaner” except DeepPlants */
-    .logo-pill img{
-    filter: grayscale(10%);
-    }
-    .logo-pill:first-child img{
-    filter: none;          /* DeepPlants stays colorful */
-    }
+    .logo-pill img{ filter: grayscale(10%); }
+    .logo-pill:first-child img{ filter: none; }
 
     /* Footer */
     footer{
@@ -290,29 +292,22 @@
       color: var(--muted);
     }
 
-    /* Small tweaks */
     .divider{ border-top: 1px solid var(--line); margin: 22px 0; }
-    
-    .small-muted{ 
-      color: var(--muted-2);
-       font-size: 1.0rem;
-       line-height: 1.6;
-      }
+    .small-muted{ color: var(--muted-2); font-size: 1.0rem; line-height: 1.6; }
 
-
-    /* ===== Vertical Side Nav (Desktop, Blue Theme) ===== */
+    /* ===== Vertical Side Nav (Desktop, DARK to match top nav) ===== */
     .side-nav{
       position: fixed;
       left: 18px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 1100;
-      padding: 12px 10px;
+      padding: 10px 10px;
       border-radius: 18px;
-      background: rgba(244,247,255,0.92);  /* same as top nav */
-      border: 1px solid rgba(10,44,255,0.15);
+      background: rgba(5, 6, 10, 0.82);
+      border: 1px solid rgba(255,255,255,0.12);
       backdrop-filter: blur(10px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.25);
     }
 
     .side-link{
@@ -322,14 +317,14 @@
       padding: 8px 10px;
       border-radius: 14px;
       text-decoration: none;
-      color: var(--blue-muted);
+      color: rgba(255,255,255,0.74);
       transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
       white-space: nowrap;
     }
 
     .side-link:hover{
-      background: rgba(10,44,255,0.08);
-      color: var(--blue-main);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
       transform: translateX(2px);
       text-decoration: none;
     }
@@ -338,52 +333,45 @@
       width: 10px;
       height: 10px;
       border-radius: 999px;
-      background: rgba(10,44,255,0.55);
-      box-shadow: 0 0 0 4px rgba(10,44,255,0.12);
+      background: rgba(255,255,255,0.50);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.10);
       flex: 0 0 auto;
     }
 
-    .side-nav .label{
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    @media (min-width: 992px){
-      body{
-        padding-left: 110px; /* room for the side nav */
-      }
-    }
-    @media (min-width: 992px){
-      .navbar{
-        background: rgba(244,247,255,0.75);
-      }
-    }
-
     .side-link.active{
-      background: rgba(10,44,255,0.10);
-      color: var(--blue-main);
-      font-weight: 600;
+      background: rgba(255,255,255,0.10);
+      color: #fff;
+      font-weight: 650;
     }
-
     .side-link.active .dot{
-      background: var(--blue-main);
-      box-shadow: 0 0 0 4px rgba(10,44,255,0.22);
+      background: var(--brand);
+      box-shadow: 0 0 0 4px rgba(255,193,7,0.18);
     }
 
-
-
-  html { font-size: 18px; }
-  body { line-height: 1.65; }
+    @media (min-width: 992px){
+      body{ padding-left: 110px; } /* room for side nav */
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- NAV -->
+  <!-- Vertical Side Nav (desktop only) -->
+  <nav class="side-nav d-none d-lg-block" aria-label="Section navigation">
+    <a class="side-link" href="#top"><span class="dot"></span><span class="label">Top</span></a>
+    <a class="side-link" href="#build"><span class="dot"></span><span class="label">What I Build</span></a>
+    <a class="side-link" href="#projects"><span class="dot"></span><span class="label">Flagship Systems</span></a>
+    <a class="side-link" href="#venture"><span class="dot"></span><span class="label">Venture</span></a>
+    <a class="side-link" href="#publications"><span class="dot"></span><span class="label">Publications</span></a>
+    <a class="side-link" href="#background"><span class="dot"></span><span class="label">Background</span></a>
+    <a class="side-link" href="#contact"><span class="dot"></span><span class="label">Contact</span></a>
+  </nav>
+
+  <!-- TOP NAV -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand name-brand" href="#top">Javed Ahmad</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="nav" class="collapse navbar-collapse">
@@ -405,7 +393,6 @@
       <div class="hero-card p-4 p-md-5">
         <div class="row g-4 align-items-center">
           <div class="col-md-3 text-center text-md-start">
-            <!-- Replace with your photo -->
             <img class="portrait" src="imgs/portrait_javed.png" alt="Javed Ahmad (portrait)">
             <div class="mt-3 d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
               <span class="badge-pill"><i class="bi bi-geo-alt"></i> Rome, Italy</span>
@@ -415,9 +402,7 @@
 
           <div class="col-md-9">
             <h1 class="display-5 mb-2">3D Vision & Robotics Researcher</h1>
-                <p class="subtitle">
-                Ph.D. · Former Postdoc · Industry Researcher
-                </p>
+            <p class="subtitle">Ph.D. · Former Postdoc · Industry Researcher</p>
             <p class="subtitle mb-3">
               I build end-to-end autonomous systems at the intersection of <strong>SLAM</strong>,
               <strong>active 3D perception</strong>, and <strong>robotic platforms</strong> (UAVs and mobile manipulation).
@@ -439,55 +424,40 @@
               <div class="col-lg-4">
                 <div class="glass card-pad">
                   <div class="fw-bold mb-1"><i class="bi bi-rocket-takeoff"></i> Current</div>
-                  <div class="small-muted">
-                    Autonomous drone-based 3D vision and SLAM pipelines for agricultural field analysis.
-                  </div>
+                  <div class="small-muted">Autonomous drone-based 3D vision and SLAM pipelines for agricultural field analysis.</div>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="glass card-pad">
                   <div class="fw-bold mb-1"><i class="bi bi-bounding-box-circles"></i> Focus</div>
-                  <div class="small-muted">
-                    SLAM · 3D mapping · neural scene representations · multimodal fusion · real-time autonomous systems.
-                  </div>
+                  <div class="small-muted">SLAM · 3D mapping · neural scene representations · multimodal fusion · real-time autonomous systems.</div>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="glass card-pad">
                   <div class="fw-bold mb-1"><i class="bi bi-trophy"></i> Highlights</div>
-                  <div class="small-muted">
-                    1st prize: VISUM 2021 & EEML 2020 summer school.
-                  </div>
+                  <div class="small-muted">1st prize: VISUM 2021 & EEML 2020 summer school.</div>
                 </div>
               </div>
             </div>
 
-            <!-- Logos -->
             <div class="logo-strip">
-            <a class="logo-pill" href="#" title="DeepPlants">
-                <img src="imgs/Alpha_DP_Logo_cropped.png" alt="DeepPlants">
-            </a>
-            <a class="logo-pill" href="#" title="IIT ADVR">
-                <img src="imgs/logo_advr.png" alt="ADVR IIT">
-            </a>
-            <a class="logo-pill" href="#" title="IIT CCHT">
-                <img src="imgs/Logo-IIT_CaFoscari.png" alt="CCHT IIT">
-            </a>
-            <a class="logo-pill" href="#" title="PAVIS">
-                <img src="imgs/pavis_logo.jpeg" alt="PAVIS Lab">
-            </a>
-            <a class="logo-pill" href="#" title="UniGe">
-                <img src="imgs/Unige-logo.png" alt="UniGe">
-            </a>
+              <a class="logo-pill" href="#" title="DeepPlants"><img src="imgs/Alpha_DP_Logo_cropped.png" alt="DeepPlants"></a>
+              <a class="logo-pill" href="#" title="IIT ADVR"><img src="imgs/logo_advr.png" alt="ADVR IIT"></a>
+              <a class="logo-pill" href="#" title="IIT CCHT"><img src="imgs/Logo-IIT_CaFoscari.png" alt="CCHT IIT"></a>
+              <a class="logo-pill" href="#" title="PAVIS"><img src="imgs/pavis_logo.jpeg" alt="PAVIS Lab"></a>
+              <a class="logo-pill" href="#" title="UniGe"><img src="imgs/Unige-logo.png" alt="UniGe"></a>
             </div>
 
-        </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- WHAT I BUILD -->
+  
+
+    <!-- WHAT I BUILD -->
   <section id="build">
     <div class="container">
       <h2 class="section-title">What I Build</h2>
@@ -961,6 +931,7 @@
     </div>
   </section>
 
+
   <footer>
     <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
       <div>© <span id="year"></span> Javed Ahmad</div>
@@ -970,55 +941,27 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-</body>
+    // Side-nav active section highlight
+    const sections = ["top","build","projects","venture","publications","background","contact"];
+    const sideLinks = Array.from(document.querySelectorAll(".side-link"));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          sideLinks.forEach(a => a.classList.remove("active"));
+          const id = e.target.id || "top";
+          const link = sideLinks.find(a => a.getAttribute("href") === "#" + id);
+          if (link) link.classList.add("active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 });
 
-<!-- Vertical Side Nav (desktop) -->
-<nav class="side-nav d-none d-lg-block" aria-label="Section navigation">
-  <a class="side-link" href="#top">
-    <span class="dot"></span><span class="label">Top</span>
-  </a>
-  <a class="side-link" href="#build">
-    <span class="dot"></span><span class="label">What I Build</span>
-  </a>
-  <a class="side-link" href="#projects">
-    <span class="dot"></span><span class="label">Flagship Systems</span>
-  </a>
-  <a class="side-link" href="#venture">
-    <span class="dot"></span><span class="label">Venture</span>
-  </a>
-  <a class="side-link" href="#publications">
-    <span class="dot"></span><span class="label">Publications</span>
-  </a>
-  <a class="side-link" href="#background">
-    <span class="dot"></span><span class="label">Background</span>
-  </a>
-  <a class="side-link" href="#contact">
-    <span class="dot"></span><span class="label">Contact</span>
-  </a>
-</nav>
-<script>
-  const sections = ["top","build","projects","venture","publications","background","contact"];
-  const sideLinks = Array.from(document.querySelectorAll(".side-link"));
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting){
-        sideLinks.forEach(a => a.classList.remove("active"));
-        const id = e.target.id || "top";
-        const link = sideLinks.find(a => a.getAttribute("href") === "#" + id);
-        if (link) link.classList.add("active");
-      }
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
     });
-  }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 });
+  </script>
 
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) obs.observe(el);
-  });
-</script>
-
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
