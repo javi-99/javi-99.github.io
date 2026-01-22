@@ -207,6 +207,49 @@
       object-fit: cover;
       display: block;
     }
+    /* Publications: show full figure (no crop) */
+    .pub-media img{
+      object-fit: contain !important;
+      background: rgba(0,0,0,0.25); /* optional: looks nicer behind transparent/white figures */
+    }
+
+    /* === Publications: enlarge figure on hover / touch === */
+    .pub-media{
+      position: relative;
+    }
+
+    .pub-media img{
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      transform-origin: center center;
+    }
+
+    /* Desktop hover */
+    .pub-media:hover img{
+      transform: scale(2.2);
+      z-index: 50;
+      position: relative;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+    }
+
+    /* Mobile: while finger is pressing */
+    @media (hover: none){
+      .pub-media:active img{
+        transform: scale(2.2);
+        z-index: 50;
+        position: relative;
+        box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+      }
+    }
+
+    /* Ensure it can overflow outside card cleanly */
+    .pub-item, .pub-item .row, .pub-item .col-lg-4, .media-box{
+      overflow: visible !important;
+    }
+
+
+
+
+
     .media-placeholder{
       height: 220px;
       display:flex;
@@ -551,14 +594,17 @@
         <div class="col-lg-6">
           <div class="glass h-100">
             <div class="media-box">
-              <div class="media-placeholder">[Placeholder: Gaussian splatting SLAM demo / teaser video]</div>
+              <!-- You can replace with an image; leaving placeholder -->
+              <video playsinline autoplay loop muted>
+                    <source src="imgs/gsslam4vr_web.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="card-pad">
               <div class="fw-bold fs-5">Real-time SLAM with 3D Gaussian Splatting (RIAP)</div>
               <div class="small-muted">Postdoc · ADVR, IIT Genoa</div>
 
               <p class="mt-3 mb-2">
-                Built real-time SLAM pipelines based on neural scene representations to support immersive teleoperation and mapping.
+                Built real-time SLAM pipelines based on neural scene representations to support immersive teleoperation and mapping through VR.
               </p>
 
               <div class="mb-3">
@@ -577,7 +623,9 @@
           <div class="glass h-100">
             <div class="media-box">
               <!-- You can replace with an image; leaving placeholder -->
-              <div class="media-placeholder">[Placeholder: UR5e/UR3e + artifact scanning setup]</div>
+              <video playsinline autoplay loop muted>
+                    <source src="imgs/cte_genova_project.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="card-pad">
               <div class="d-flex flex-wrap justify-content-between align-items-start gap-2">
@@ -613,11 +661,11 @@
               <div class="media-placeholder">[Placeholder: multimodal fusion diagram + qualitative detection]</div>
             </div>
             <div class="card-pad">
-              <div class="fw-bold fs-5">Multimodal 3D Scene Perception (PhD)</div>
+              <div class="fw-bold fs-5">Multimodal 3D Scene Perception (PhD Work)</div>
               <div class="small-muted">PAVIS, IIT · Thesis: Multimodal 3D Scene Perception</div>
 
               <p class="mt-3 mb-2">
-                Research on LiDAR–camera fusion and multi-view 3D understanding for robust scene perception and localization.
+                Research on LiDAR–camera fusion and multi-view 3D understanding for robust scene perception and object localization.
               </p>
 
               <div class="mb-3">
@@ -661,12 +709,11 @@
                 <li>Adaptive data acquisition driven by scene geometry</li>
                 <li>Automated generation of standardized 3D assets</li>
             </ul>
-          </div>
             <p class="small-muted mt-3">
             This section outlines a research-driven product direction; technical details and system design
             are intentionally abstracted at this stage.
             </p>
-
+          </div>
         </div>
 
         <div class="col-lg-5">
@@ -712,35 +759,52 @@
         <!-- 2025 arXiv Survey (from CV) -->
         <div class="col-12">
           <div class="pub-item">
-            <div class="pub-title">From Fields to Splats: A Cross-Domain Survey of Real-Time Neural Scene Representations</div>
-            <div class="pub-meta">arXiv 2025 · Javed Ahmad, et al.</div>
-            <div class="pub-links mt-2">
-              <!-- Add your arXiv link when ready -->
-              <a href="#" onclick="return false;">[arXiv — add link]</a>
+            <div class="row g-3 align-items-center">
+              <div class="col-lg-4">
+                <div class="media-box pub-media">
+                  <img src="imgs/fields2splats.png" alt="Fields2Splats figure">
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="pub-title">From Fields to Splats: A Cross-Domain Survey of Real-Time Neural Scene Representations</div>
+                <div class="pub-meta">arXiv 2025 · Javed Ahmad, et al.</div>
+                <div class="pub-links mt-2">
+                  <a href="https://www.arxiv.org/abs/2509.23555">[arXiv]</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
+
         <!-- 2025 arXiv Heritage (from CV) -->
         <div class="col-12">
           <div class="pub-item">
-            <div class="pub-title">Hands-Free Heritage: Automated 3D Scanning for Cultural Heritage Digitization</div>
-            <div class="pub-meta">arXiv 2025 · Javed Ahmad, et al.</div>
-            <div class="pub-links mt-2">
-              <a href="#" onclick="return false;">[arXiv — add link]</a>
+            <div class="row g-3 align-items-center">
+              <div class="col-lg-4">
+                <div class="media-box pub-media">
+                  <img src="imgs/handsfree.png" alt="Hands-Free figure">
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="pub-title">Hands-Free Heritage: Automated 3D Scanning for Cultural Heritage Digitization</div>
+                <div class="pub-meta">arXiv 2025 · Javed Ahmad, et al.</div>
+                <div class="pub-links mt-2">
+                  <a href="https://arxiv.org/abs/2510.04781">[arXiv]</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
 
         <!-- AAPOE -->
         <div class="col-12">
           <div class="pub-item">
             <div class="row g-3 align-items-center">
               <div class="col-lg-4">
-                <div class="media-box">
-                  <video playsinline autoplay loop muted>
-                    <source src="imgs/AAPOE_teaser.mp4" type="video/mp4">
-                  </video>
+                <div class="media-box pub-media">
+                    <img src="imgs/aapoe_setup.png" alt="AAPOE Setup figure">
                 </div>
               </div>
               <div class="col-lg-8">
@@ -761,8 +825,8 @@
           <div class="pub-item">
             <div class="row g-3 align-items-center">
               <div class="col-lg-4">
-                <div class="media-box">
-                  <img src="imgs/mmFUSION.png" alt="mmFUSION figure">
+                <div class="media-box pub-media">
+                  <img src="imgs/mmfusion.png" alt="mmFUSION figure">
                 </div>
               </div>
               <div class="col-lg-8">
@@ -783,8 +847,8 @@
           <div class="pub-item">
             <div class="row g-3 align-items-center">
               <div class="col-lg-4">
-                <div class="media-box">
-                  <img src="imgs/product_retrieval.png" alt="Fashion retrieval figure">
+                <div class="media-box pub-media">
+                  <img src="imgs/json_approach.png" alt="Fashion retrieval figure">
                 </div>
               </div>
               <div class="col-lg-8">
@@ -804,7 +868,7 @@
           <div class="pub-item">
             <div class="row g-3 align-items-center">
               <div class="col-lg-4">
-                <div class="media-box">
+                <div class="media-box pub-media">
                   <img src="imgs/iciap2021.png" alt="ICIAP 2022 figure">
                 </div>
               </div>
@@ -915,13 +979,13 @@
 
         <div class="col-lg-4">
           <div class="glass card-pad h-100">
-            <div class="fw-bold mb-2"><i class="bi bi-image"></i> Visual placeholders checklist</div>
+            <div class="fw-bold mb-2"><i class="bi bi-image"></i> Upcoming ...</div>
             <div class="small-muted">
-              Add 1–2 visuals per flagship project:
+              Flagship projects:
               <ul class="mt-2 mb-0">
-                <li>Trajectory + map</li>
-                <li>System diagram</li>
-                <li>Short demo GIF/MP4</li>
+                <li>TBA</li>
+                <li>TBA</li>
+                <li>TBA</li>
               </ul>
             </div>
           </div>
