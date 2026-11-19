@@ -1,943 +1,322 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Javed Ahmad — Robotics & 3D Vision</title>
-
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg: #0b0f19;
-      --text: #e8edf7;
-      --muted: rgba(232,237,247,0.75);
-      --muted-2: rgba(232,237,247,0.60);
-      --line: rgba(255,255,255,0.12);
-      --brand: #ffc107;
-      --shadow: 0 18px 50px rgba(0,0,0,0.35);
-      --radius: 18px;
-
-      /* navbar colors */
-      --nav-bg: rgba(5, 6, 10, 0.98);
-      --nav-border: rgba(255,255,255,0.10);
-
-    }
-    :root{
-    --nav-offset: 90px;  /* adjust if needed */
-    }
-
-    /* Make anchor jumps stop below the fixed navbar */
-    section{
-    scroll-margin-top: var(--nav-offset);
-    }
-
-    /* Also cover the top anchor (hero container) */
-    #top{
-    scroll-margin-top: var(--nav-offset);
-    }
-
-    html { scroll-behavior: smooth; font-size: 18px; }
-    body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 600px at 15% 0%, rgba(110,231,255,0.15), transparent 55%),
-        radial-gradient(900px 600px at 85% 10%, rgba(255,193,7,0.14), transparent 60%),
-        var(--bg);
-      line-height: 1.65;
-      color: var(--text);
-    }
-
-    a{ color: var(--brand); text-decoration: none; }
-    a:hover{ color: #ffd34d; text-decoration: underline; }
-
-    /* ===== TOP NAVBAR (keep dark ALWAYS for contrast) ===== */
-    .navbar{
-      background: var(--nav-bg) !important;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--nav-border);
-    }
-
-    .navbar-brand.name-brand{
-      color: #fff !important;
-      font-weight: 900;
-      letter-spacing: -0.015em;
-      font-size: 2.0rem;   /* important: don't use 2.5rem in navbar */
-    }
-
-    .nav-link{
-      color: rgba(255,255,255,0.74) !important;
-      font-weight: 500;
-    }
-    .nav-link:hover{
-      color: #ffffff !important;
-      text-decoration: none;
-    }
-    .nav-link.active{
-      color: var(--brand) !important; /* high-contrast active */
-      font-weight: 650;
-    }
-
-    .navbar i{ color: rgba(255,255,255,0.78); }
-
-    .navbar .navbar-toggler{
-      border-color: rgba(255,255,255,0.25);
-    }
-    .navbar .navbar-toggler-icon{
-      filter: brightness(0) invert(1);
-    }
-
-    /* ===== HERO ===== */
-    .hero{ padding: 92px 0 44px 0; }
-
-    .hero-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 6px);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(600px 300px at 20% 10%, rgba(255,193,7,0.18), transparent 60%),
-        radial-gradient(520px 280px at 85% 25%, rgba(110,231,255,0.18), transparent 55%);
-      pointer-events:none;
-      z-index:0;
-    }
-    .hero-card > .row{ position: relative; z-index: 1; }
-
-    .portrait{
-      width: 200px; height: 200px;
-      border-radius: 500px;
-      border: 3px solid rgba(255,255,255,0.22);
-      object-fit: cover;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
-    }
-
-    .badge-pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .hero h1{ font-weight: 800; letter-spacing: -0.02em; }
-    .hero .subtitle{
-      color: var(--muted);
-      font-size: 1.12rem;
-      line-height: 1.6;
-    }
-
-    .cta-row a.btn{
-      border-radius: 999px;
-      padding: 10px 14px;
-      border: 1px solid rgba(255,255,255,0.14);
-    }
-    .btn-brand{
-      background: var(--brand);
-      color: #111;
-      border-color: rgba(0,0,0,0.08) !important;
-    }
-    .btn-brand:hover{ background:#ffd34d; color:#111; text-decoration:none; }
-    .btn-ghost{
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
-    }
-    .btn-ghost:hover{ background: rgba(255,255,255,0.10); color: var(--text); text-decoration:none; }
-
-    /* ===== SECTIONS ===== */
-    section{ padding: 56px 0; }
-    .section-title{
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      margin-bottom: 14px;
-    }
-    .section-lead{
-      color: var(--muted);
-      max-width: 78ch;
-      font-size: 1.06rem;
-      line-height: 1.7;
-    }
-
-    /* ===== CARDS ===== */
-    .glass{
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 12px 34px rgba(0,0,0,0.18);
-      transition: transform 0.18s ease, border-color 0.18s ease;
-    }
-    .glass:hover{
-      border-color: rgba(255,255,255,0.18);
-      transform: translateY(-2px);
-    }
-    .card-pad{ padding: 18px; }
-
-    .tag{
-      display:inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin: 0 6px 8px 0;
-      white-space: nowrap;
-    }
-
-    .media-box{
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(0,0,0,0.25);
-    }
-    .media-box img,
-    .media-box video{
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-    }
-    /* Publications: show full figure (no crop) */
-    .pub-media img{
-      object-fit: contain !important;
-      background: rgba(0,0,0,0.25); /* optional: looks nicer behind transparent/white figures */
-    }
-
-    /* === Publications: enlarge figure on hover / touch === */
-    .pub-media{
-      position: relative;
-    }
-
-    .pub-media img{
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-      transform-origin: center center;
-    }
-
-    /* Desktop hover */
-    .pub-media:hover img{
-      transform: scale(2.2);
-      z-index: 50;
-      position: relative;
-      box-shadow: 0 18px 60px rgba(0,0,0,0.55);
-    }
-
-    /* Mobile: while finger is pressing */
-    @media (hover: none){
-      .pub-media:active img{
-        transform: scale(2.2);
-        z-index: 50;
-        position: relative;
-        box-shadow: 0 18px 60px rgba(0,0,0,0.55);
-      }
-    }
-
-    /* Ensure it can overflow outside card cleanly */
-    .pub-item, .pub-item .row, .pub-item .col-lg-4, .media-box{
-      overflow: visible !important;
-    }
-
-
-
-
-
-    .media-placeholder{
-      height: 220px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: var(--muted-2);
-      background:
-        linear-gradient(135deg, rgba(255,193,7,0.10), rgba(110,231,255,0.10)),
-        rgba(255,255,255,0.04);
-      font-weight: 650;
-      letter-spacing: 0.02em;
-    }
-
-    /* Publications */
-    .pub-item{
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-    }
-    .pub-title{ font-weight: 800; }
-    .pub-meta{ color: var(--muted); font-size: 1.02rem; }
-    .pub-links a{ margin-right: 10px; }
-
-    /* Timeline */
-    .timeline{
-      border-left: 2px solid rgba(255,255,255,0.12);
-      padding-left: 18px;
-    }
-    .tl-item{ margin-bottom: 18px; position: relative; }
-    .tl-item::before{
-      content:"";
-      position:absolute;
-      left:-26px; top: 6px;
-      width: 12px; height: 12px;
-      border-radius: 999px;
-      background: var(--brand);
-      box-shadow: 0 0 0 4px rgba(255,193,7,0.15);
-    }
-    .tl-role{ font-weight: 800; }
-    .tl-when{ color: var(--muted); font-size: 0.92rem; }
-
-    /* Logos */
-    .logo-strip{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-top: 16px;
-    }
-    .logo-pill{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
-      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-      text-decoration: none;
-    }
-    .logo-pill:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.09);
-      border-color: rgba(255,255,255,0.20);
-    }
-    .logo-pill img{
-      height: 40px;
-      width: auto;
-      max-width: 160px;
-      object-fit: contain;
-      display: block;
-      opacity: 0.92;
-    }
-    .logo-pill img{ filter: grayscale(10%); }
-    .logo-pill:first-child img{ filter: none; }
-
-    /* Footer */
-    footer{
-      border-top: 1px solid var(--line);
-      padding: 28px 0;
-      color: var(--muted);
-    }
-
-    .divider{ border-top: 1px solid var(--line); margin: 22px 0; }
-    .small-muted{ color: var(--muted-2); font-size: 1.0rem; line-height: 1.6; }
-
-    /* ===== Vertical Side Nav (Desktop, DARK to match top nav) ===== */
-    .side-nav{
-      position: fixed;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1100;
-      padding: 10px 10px;
-      border-radius: 18px;
-      background: rgba(5, 6, 10, 0.82);
-      border: 1px solid rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.25);
-    }
-
-    .side-link{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 10px;
-      border-radius: 14px;
-      text-decoration: none;
-      color: rgba(255,255,255,0.74);
-      transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
-      white-space: nowrap;
-    }
-
-    .side-link:hover{
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      transform: translateX(2px);
-      text-decoration: none;
-    }
-
-    .side-nav .dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.50);
-      box-shadow: 0 0 0 4px rgba(255,255,255,0.10);
-      flex: 0 0 auto;
-    }
-
-    .side-link.active{
-      background: rgba(255,255,255,0.10);
-      color: #fff;
-      font-weight: 650;
-    }
-    .side-link.active .dot{
-      background: var(--brand);
-      box-shadow: 0 0 0 4px rgba(255,193,7,0.18);
-    }
-
-    @media (min-width: 992px){
-      body{ padding-left: 110px; } /* room for side nav */
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Javed Ahmad | Computer Vision and Robotics Researcher</title>
+  <meta name="description" content="Javed Ahmad is a computer vision researcher at DeepPlants working on autonomous UAV perception, SLAM, and dense 3D reconstruction.">
+  <link rel="canonical" href="https://javi-99.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..800&amp;display=swap">
+  <link rel="stylesheet" href="css/portfolio.css">
 </head>
-
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Vertical Side Nav (desktop only) -->
-  <nav class="side-nav d-none d-lg-block" aria-label="Section navigation">
-    <a class="side-link" href="#top"><span class="dot"></span><span class="label">Top</span></a>
-    <a class="side-link" href="#build"><span class="dot"></span><span class="label">What I Build</span></a>
-    <a class="side-link" href="#projects"><span class="dot"></span><span class="label">Flagship Systems</span></a>
-    <a class="side-link" href="#venture"><span class="dot"></span><span class="label">Venture</span></a>
-    <a class="side-link" href="#publications"><span class="dot"></span><span class="label">Publications</span></a>
-    <a class="side-link" href="#background"><span class="dot"></span><span class="label">Background</span></a>
-    <a class="side-link" href="#contact"><span class="dot"></span><span class="label">Contact</span></a>
-  </nav>
-
-  <!-- TOP NAV -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand name-brand" href="#top">Javed Ahmad</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div id="nav" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#build">What I Build</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Flagship Systems</a></li>
-          <li class="nav-item"><a class="nav-link" href="#venture">Venture</a></li>
-          <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
-          <li class="nav-item"><a class="nav-link" href="#background">Background</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
+  <header class="site-header">
+    <nav class="container site-nav" aria-label="Main navigation">
+      <a class="site-name" href="#top">Javed Ahmad</a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#build">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#background">Background</a>
+        <a href="#contact">Contact</a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- HERO -->
-  <div id="top" class="hero">
-    <div class="container">
-      <div class="hero-card p-4 p-md-5">
-        <div class="row g-4 align-items-center">
-          <div class="col-md-3 text-center text-md-start">
-            <img class="portrait" src="imgs/portrait_javed.png" alt="Javed Ahmad (portrait)">
-            <div class="mt-3 d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
-              <span class="badge-pill"><i class="bi bi-geo-alt"></i> Rome, Italy</span>
-              <span class="badge-pill"><i class="bi bi-cpu"></i> Robotics · 3D Vision</span>
-            </div>
-          </div>
-
-          <div class="col-md-9">
-            <h1 class="display-5 mb-2">3D Vision & Robotics Researcher</h1>
-            <p class="subtitle">Ph.D. · Former Postdoc · Industry Researcher</p>
-            <p class="subtitle mb-3">
-              I build end-to-end autonomous systems at the intersection of <strong>SLAM</strong>,
-              <strong>active 3D perception</strong>, and <strong>robotic platforms</strong> (mobile manipulation).
-              Previously at the Italian Institute of Technology (ADVR & CCHT), and currently in industry developing
-              3D vision systems.
-            </p>
-
-            <div class="d-flex flex-wrap gap-2 cta-row">
-              <a class="btn btn-brand" href="docs/cv_javed_ahmad.pdf"><i class="bi bi-file-earmark-text"></i> Download CV</a>
-              <a class="btn btn-ghost" href="https://github.com/javi-99"><i class="bi bi-github"></i> GitHub</a>
-              <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=FSBvCO4AAAAJ&hl=en"><i class="bi bi-mortarboard"></i> Google Scholar</a>
-              <a class="btn btn-ghost" href="https://linkedin.com/in/javed-ahmad-4692384a"><i class="bi bi-linkedin"></i> LinkedIn</a>
-              <a class="btn btn-ghost" href="#contact"><i class="bi bi-envelope"></i> Contact</a>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="row g-3">
-            <!--
-              <div class="col-lg-4">
-                <div class="glass card-pad">
-                  <div class="fw-bold mb-1"><i class="bi bi-rocket-takeoff"></i> Current</div>
-                  <div class="small-muted">Autonomous drone-based 3D vision and SLAM pipelines for agricultural field analysis.</div>
-                </div>
-              </div>
-            -->
-              
-              <div class="col-lg-4">
-                <div class="glass card-pad">
-                  <div class="fw-bold mb-1"><i class="bi bi-bounding-box-circles"></i> Focus</div>
-                  <div class="small-muted">SLAM · 3D mapping · neural scene representations · multimodal fusion · real-time autonomous systems.</div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="glass card-pad">
-                  <div class="fw-bold mb-1"><i class="bi bi-trophy"></i> Highlights</div>
-                  <div class="small-muted">1st prize: VISUM 2021 & EEML 2020 summer school.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="logo-strip">
-              <a class="logo-pill" href="#" title="DeepPlants"><img src="imgs/Alpha_DP_Logo_cropped.png" alt="DeepPlants"></a>
-              <a class="logo-pill" href="#" title="IIT ADVR"><img src="imgs/logo_advr.png" alt="ADVR IIT"></a>
-              <a class="logo-pill" href="#" title="IIT CCHT"><img src="imgs/Logo-IIT_CaFoscari.png" alt="CCHT IIT"></a>
-              <a class="logo-pill" href="#" title="PAVIS"><img src="imgs/pavis_logo.jpeg" alt="PAVIS Lab"></a>
-              <a class="logo-pill" href="#" title="UniGe"><img src="imgs/Unige-logo.png" alt="UniGe"></a>
-            </div>
-
-          </div>
+  <main id="main" class="container">
+    <section id="top" class="hero panel" aria-labelledby="name">
+      <img class="portrait" src="imgs/portrait_javed.png" alt="Portrait of Javed Ahmad" width="200" height="200">
+      <div>
+        <h1 id="name">Javed Ahmad</h1>
+        <p class="hero-role">Computer Vision and Robotics Researcher</p>
+        <p class="affiliation">DeepPlants · Rome, Italy</p>
+        <p class="intro">
+          I develop autonomous UAV perception systems for agricultural mapping, combining visual localization,
+          SLAM, and dense 3D reconstruction. At the Italian Institute of Technology, I worked on 3D Gaussian
+          Splatting for robotic teleoperation, autonomous artifact scanning, and LiDAR–camera fusion for 3D detection.
+          I earned my Ph.D. at the University of Genoa and the Italian Institute of Technology.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="docs/cv_JavedAHMAD.pdf" download="Javed_Ahmad_CV.pdf">Download CV</a>
+          <a class="button" href="https://scholar.google.com/citations?user=FSBvCO4AAAAJ&amp;hl=en">Google Scholar</a>
+          <a class="button" href="https://github.com/javi-99">GitHub</a>
+          <a class="button" href="https://www.linkedin.com/in/javed-ahmad-4692384a/">LinkedIn</a>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  
-
-    <!-- WHAT I BUILD -->
-  <section id="build">
-    <div class="container">
-      <h2 class="section-title">What I Build</h2>
-      <p class="section-lead">
-        Systems that connect perception, planning, and deployment — not just standalone models.
-      </p>
-
-      <div class="row g-3 mt-2">
-        <div class="col-md-4">
-          <div class="glass card-pad h-100">
-            <div class="fw-bold mb-2"><i class="bi bi-robot"></i> Autonomous Robots</div>
-            <div class="small-muted">
-              robot manipulators that execute missions end-to-end: sensing, decision-making, and safety-aware operation.
-            </div>
-            <div class="mt-3">
-              <span class="tag">Pinocchio</span><span class="tag">PX4</span><span class="tag">MAVSDK/MAVLink</span><span class="tag">ROS 2</span>
-            </div>
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Selected Projects</h2>
+      <article id="agromap3d" class="panel featured">
+        <div class="featured-copy">
+          <div class="project-logos">
+            <img class="brand-logo" src="imgs/wacv2027-logo.webp" alt="WACV 2027" width="520" height="188">
+            <img class="brand-logo" src="imgs/deepplants_logo.png" alt="DeepPlants" width="244" height="244">
+          </div>
+          <h3>AgroMap3D</h3>
+          <p class="project-subtitle">Reliability-Aware Dense Mapping from Agricultural UAV Video</p>
+          <p class="project-summary">Builds dense field maps using reliability-weighted pose constraints.</p>
+          <div class="actions">
+            <a class="button primary" href="https://deepplants.github.io/agromap3d/">Project page</a>
+            <a class="button" href="#agromap3d-publication">Publication details</a>
           </div>
         </div>
+        <figure class="demo">
+          <video controls playsinline preload="none" poster="imgs/agromap3d-poster.webp" aria-label="AgroMap3D reconstruction demo">
+            <source src="imgs/agromap3d-demo.mp4" type="video/mp4">
+            <a href="imgs/agromap3d-demo.mp4">Download the AgroMap3D demo</a>
+          </video>
+          <figcaption>Field reconstructions and estimated UAV trajectories.</figcaption>
+        </figure>
+      </article>
 
-        <div class="col-md-4">
-          <div class="glass card-pad h-100">
-            <div class="fw-bold mb-2"><i class="bi bi-map"></i> Active 3D Perception</div>
-            <div class="small-muted">
-              SLAM and 3D mapping pipelines (including neural scene representations) from small to large-scale, real-world environments.
+      <div class="project-grid">
+        <article class="panel project">
+          <video controls playsinline preload="none" poster="imgs/gaussian-slam-poster.webp" aria-label="Gaussian Splatting SLAM demo">
+            <source src="imgs/gsslam4vr_web.mp4" type="video/mp4">
+            <a href="imgs/gsslam4vr_web.mp4">Download the Gaussian Splatting SLAM demo</a>
+          </video>
+          <div class="card-copy">
+            <div class="project-logos">
+              <img class="brand-logo brand-logo-dark" src="imgs/logo_advr.png" alt="Italian Institute of Technology · Advanced Robotics (ADVR)" width="1000" height="243" loading="lazy">
             </div>
-            <div class="mt-3">
-              <span class="tag">SLAM</span><span class="tag">3D Gaussian Splatting</span><span class="tag">NeRF</span>
+            <h3>3D Gaussian Splatting for Robotic Teleoperation</h3>
+            <p class="project-summary">Real-time 3D mapping for robot teleoperation in VR.</p>
+          </div>
+        </article>
+        <article class="panel project">
+          <video controls playsinline preload="none" poster="imgs/artifact-scanning-poster.webp" aria-label="Robotic artifact scanning demo">
+            <source src="imgs/cte_genova_project.mp4" type="video/mp4">
+            <a href="imgs/cte_genova_project.mp4">Download the robotic artifact scanning demo</a>
+          </video>
+          <div class="card-copy">
+            <div class="project-logos">
+              <img class="brand-logo" src="imgs/Logo-IIT_CaFoscari.png" alt="Italian Institute of Technology · Center for Cultural Heritage Technology (CCHT)" width="1000" height="261" loading="lazy">
             </div>
+            <h3>Autonomous Robotic Scanning for Cultural Heritage</h3>
+            <p class="project-summary">Robotic artifact scanning with 6-DoF pose estimation.</p>
+          </div>
+        </article>
+        <article class="panel project">
+          <img class="project-image" src="imgs/mmfusion.png" alt="Diagram of the mmFUSION LiDAR and camera fusion architecture" loading="lazy">
+          <div class="card-copy">
+            <div class="project-logos">
+              <img class="brand-logo" src="imgs/pavis_logo.jpeg" alt="Italian Institute of Technology · Pattern Analysis and Computer Vision (PAVIS)" width="800" height="213" loading="lazy">
+            </div>
+            <h3>Multimodal 3D Scene Perception</h3>
+            <p class="project-summary">LiDAR–camera fusion for 3D object detection.</p>
+            <a href="#mmfusion">mmFUSION publication</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="build" aria-labelledby="research-heading">
+      <h2 id="research-heading">Research Areas</h2>
+      <div class="research-grid">
+        <article class="panel card-copy">
+          <h3>3D Mapping and Reconstruction</h3>
+          <p>Visual localization, SLAM, structure from motion, and neural scene representations for field-scale mapping and real-time visualization.</p>
+        </article>
+        <article class="panel card-copy">
+          <h3>Robotic Perception and Autonomy</h3>
+          <p>UAV sensing and mission control, 6-DoF object pose estimation, robot motion planning, and automated 3D scanning.</p>
+        </article>
+        <article class="panel card-copy">
+          <h3>Multimodal 3D Vision</h3>
+          <p>Learning-based fusion of camera and LiDAR data for 3D detection, and geometric methods for object localization across multiple views.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="publications" aria-labelledby="publications-heading">
+      <h2 id="publications-heading">Selected Publications</h2>
+      <div class="publication-list">
+        <article id="agromap3d-publication" class="panel publication publication-featured">
+          <a class="publication-thumbnail" href="imgs/agromap3d-poster.webp">
+            <img src="imgs/agromap3d-poster.webp" alt="Open the AgroMap3D reconstruction figure" loading="lazy" width="960" height="540">
+          </a>
+          <div>
+            <div class="publication-venue">
+              <img class="brand-logo" src="imgs/wacv2027-logo.webp" alt="WACV 2027" width="520" height="188" loading="lazy">
+              <span class="venue">Accepted</span>
+            </div>
+            <h3>AgroMap3D: Reliability-Aware Dense Mapping from Agricultural UAV Video</h3>
+            <p class="meta">Javed Ahmad, S. Ahmad, D. Amiri, and F. Pirri</p>
+            <div class="publication-links">
+              <a href="https://deepplants.github.io/agromap3d/">Project page</a>
+              <a href="#agromap3d">Video demo</a>
+              <!-- Replace this status with the arXiv link when the preprint is public. -->
+              <span class="meta">arXiv preprint forthcoming</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel publication">
+          <a class="publication-thumbnail" href="imgs/fields2splats.png">
+            <img src="imgs/fields2splats.png" alt="Open the Fields to Splats survey figure" loading="lazy">
+          </a>
+          <div>
+            <p class="meta">arXiv preprint · 2025</p>
+            <h3>From Fields to Splats: A Cross-Domain Survey of Real-Time Neural Scene Representations</h3>
+            <p class="meta">Javed Ahmad et al.</p>
+            <div class="publication-links"><a href="https://arxiv.org/abs/2509.23555">arXiv</a></div>
+          </div>
+        </article>
+
+        <article class="panel publication">
+          <a class="publication-thumbnail" href="imgs/aapoe_setup.png">
+            <img src="imgs/aapoe_setup.png" alt="Open the AAPOE experimental setup figure" loading="lazy">
+          </a>
+          <div>
+            <p class="meta">IEEE/ASME MESA · 2024</p>
+            <h3>AAPOE: Automated Artifacts Position and Orientation Estimation in Cultural Heritage</h3>
+            <p class="meta">Javed Ahmad et al.</p>
+            <div class="publication-links">
+              <a href="https://doi.org/10.1109/MESA61532.2024.10704902">Paper</a>
+              <a href="imgs/AAPOE_teaser.mp4">Teaser</a>
+              <a href="https://docs.google.com/presentation/d/1M0Ux4FAmOuOk3rnylouWeYdZtPPxR-fE/edit">Slides</a>
+            </div>
+          </div>
+        </article>
+
+        <article id="mmfusion" class="panel publication">
+          <a class="publication-thumbnail" href="imgs/mmfusion.png">
+            <img src="imgs/mmfusion.png" alt="Open the mmFUSION method diagram" loading="lazy">
+          </a>
+          <div>
+            <p class="meta">arXiv preprint · 2023</p>
+            <h3>mmFUSION: Multi-modal Fusion for 3D Object Detection</h3>
+            <p class="meta">Javed Ahmad and Alessio Del Bue</p>
+            <div class="publication-links">
+              <a href="https://arxiv.org/abs/2311.04058">arXiv</a>
+              <a href="https://docs.google.com/presentation/d/14Pi3Se1FFHXG2wP3QOKE09P9Vxhoicec/edit">Slides</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel publication">
+          <a class="publication-thumbnail" href="imgs/json_approach.png">
+            <img src="imgs/json_approach.png" alt="Open the fashion outfit retrieval figure" loading="lazy">
+          </a>
+          <div>
+            <p class="meta">Machine Vision and Applications · 2023</p>
+            <h3>Fill in the Blank for Fashion Complementary Outfit Product Retrieval: VISUM Summer School Competition</h3>
+            <p class="meta">Eduardo Castro et al., including Javed Ahmad</p>
+            <div class="publication-links">
+              <a href="https://doi.org/10.1007/s00138-022-01359-x">Paper</a>
+              <a href="https://github.com/visum-summerschool/visum-competition2021">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel publication">
+          <a class="publication-thumbnail" href="imgs/iciap2021.png">
+            <img src="imgs/iciap2021.png" alt="Open the street-scene localization figure" loading="lazy">
+          </a>
+          <div>
+            <p class="meta">ICIAP · 2022</p>
+            <h3>Multi-view 3D Objects Localization from Street-Level Scenes</h3>
+            <p class="meta">Javed Ahmad, Matteo Toso, Matteo Taiana, Stuart James, and Alessio Del Bue</p>
+            <div class="publication-links">
+              <a href="https://doi.org/10.1007/978-3-031-06430-2_8">Paper</a>
+              <a href="https://github.com/javi-99/Multi-view-3D-Objects-Localization-from-Street-level-Scenes">Code</a>
+              <a href="https://docs.google.com/presentation/d/1FQcilkWd2onnH_whNc4Kb-wAGKRRF06R/edit">Slides</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel publication text-only">
+          <div>
+            <p class="meta">arXiv preprint · 2025</p>
+            <h3>Hands-Free Heritage: Automated 3D Scanning for Cultural Heritage Digitization</h3>
+            <p class="meta">Javed Ahmad et al.</p>
+            <div class="publication-links">
+              <a href="https://arxiv.org/abs/2510.04781">arXiv record</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="background" aria-labelledby="background-heading">
+      <h2 id="background-heading">Professional Background</h2>
+      <div class="background-grid">
+        <div class="panel card-copy experience">
+          <h3>Experience</h3>
+          <ol class="timeline">
+            <li>
+              <h4>Computer Vision Researcher · DeepPlants</h4>
+              <p class="meta">Sep 2025 – Present · Rome, Italy</p>
+              <p>Developing UAV perception and dense reconstruction pipelines for agriculture. Built a mission-control and RGB streaming pipeline on ModalAI VOXL 2 using PX4 and MAVSDK/MAVLink. Conduct field data collection using the DJI Mavic 3.</p>
+            </li>
+            <li>
+              <h4>Postdoctoral Researcher · Italian Institute of Technology</h4>
+              <p class="meta">Feb 2024 – Aug 2025 · Italy</p>
+              <p><strong>Advanced Robotics</strong> · Genoa, Feb–Aug 2025. SLAM and 3D Gaussian Splatting for teleoperation.</p>
+              <p><strong>Center for Cultural Heritage Technology</strong> · Venice, Feb 2024–Jan 2025. Robotic artifact scanning and 6-DoF pose estimation.</p>
+            </li>
+            <li>
+              <h4>Doctoral Researcher · PAVIS, Italian Institute of Technology</h4>
+              <p class="meta">Nov 2020 – Dec 2023 · Genoa, Italy</p>
+              <p>LiDAR–camera fusion for autonomous driving and multi-view 3D object localization for the EU MEMEX project.</p>
+            </li>
+            <li>
+              <h4>Research and Teaching Assistant · Information Technology University</h4>
+              <p class="meta">Jul 2017 – Oct 2020 · Pakistan</p>
+              <p>Research in 3D reconstruction and applied machine learning, with teaching support in machine learning, calculus, and power systems.</p>
+            </li>
+          </ol>
+        </div>
+        <div class="background-aside">
+          <div class="panel card-copy">
+            <h3>Education</h3>
+            <ul class="detail-list">
+              <li><strong>Ph.D. in Computational Vision, Automatic Recognition, and Learning</strong><br>University of Genoa and Italian Institute of Technology · 2023<br><span class="meta">Thesis: Multimodal 3D Scene Perception</span></li>
+              <li><strong>M.S. in Electrical Engineering</strong><br>Information Technology University · 2019</li>
+              <li><strong>B.S. in Electrical Engineering</strong><br>University of Central Punjab · 2017</li>
+            </ul>
+          </div>
+          <div class="panel card-copy">
+            <h3>Awards</h3>
+            <ul class="detail-list">
+              <li><strong>Ambassador of Pakistan High Achievers Award</strong><br>Embassy of Pakistan in Rome · 2026<br><span class="meta">Recognized for work in robotics, computer vision, and technological innovation.</span></li>
+              <li><strong>First Prize, VISUM Summer School Competition</strong> · 2021</li>
+              <li><strong>First Prize, EEML Proposal Competition</strong> · 2020</li>
+              <li><strong>Merit-Based Master’s Fellowship</strong> · 2017</li>
+            </ul>
           </div>
         </div>
-
-        <div class="col-md-4">
-          <div class="glass card-pad h-100">
-            <div class="fw-bold mb-2"><i class="bi bi-diagram-3"></i> End-to-End Engineering</div>
-            <div class="small-muted">
-              Data logging, visualization, reproducible experiments, and deployment constraints (real-time, safety, robustness, maintainability).
-            </div>
-            <div class="mt-3">
-              <span class="tag">Python/C++</span><span class="tag">Viser</span><span class="tag">GPU/Edge pipelines</span>
-            </div>
-          </div>
+        <div class="panel card-copy skills">
+          <h3>Technical Skills</h3>
+          <dl class="skill-list">
+            <div><dt>Computer vision and learning</dt><dd>Python, PyTorch, OpenCV, Open3D, MMDetection3D</dd></div>
+            <div><dt>3D mapping and visualization</dt><dd>COLMAP, MASt3R, VGGT, NeRF, 3D Gaussian Splatting, Viser</dd></div>
+            <div><dt>Robotics and UAVs</dt><dd>ROS 2, MoveIt 2, Pinocchio, UR-RTDE, PX4, MAVSDK/MAVLink, Gazebo SITL</dd></div>
+          </dl>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- FLAGSHIP SYSTEMS -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Flagship Systems & Projects</h2>
-      <p class="section-lead">
-        A curated selection of systems I’ve designed and developed. Visuals are included where available, and placeholders indicate future drop-in demos.
-      </p>
-
-      <div class="row g-4 mt-2">
-  
-      <!-- Project 1: DeepPlants / Field SLAM  -->
- 
-        <!-- Project 2: Gaussian Splatting SLAM -->
-        <div class="col-lg-6">
-          <div class="glass h-100">
-            <div class="media-box">
-              <!-- You can replace with an image; leaving placeholder -->
-              <video playsinline autoplay loop muted>
-                    <source src="imgs/gsslam4vr_web.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="card-pad">
-              <div class="fw-bold fs-5">Real-time SLAM with 3D Gaussian Splatting (RIAP)</div>
-              <div class="small-muted">Postdoc · ADVR, IIT Genoa</div>
-
-              <p class="mt-3 mb-2">
-                Built real-time SLAM pipelines based on neural scene representations to support immersive teleoperation and mapping through VR.
-              </p>
-
-              <div class="mb-3">
-                <span class="tag">Neural SLAM</span><span class="tag">3DGS</span><span class="tag">Real-time</span><span class="tag">GPU</span>
-              </div>
-
-              <div class="small-muted">
-               <!-- <strong>What to show here:</strong> short MP4 loop + screenshot of splats + trajectory plot. -->
-              </div>
-            </div>
-          </div>
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="panel contact">
+        <div>
+          <h2 id="contact-heading">Contact</h2>
+          <p>For research and engineering collaborations in 3D vision, mapping, or robotics, reach me by email or LinkedIn.</p>
         </div>
-
-        <!-- Project 3: Cultural Heritage Digitization -->
-        <div class="col-lg-6">
-          <div class="glass h-100">
-            <div class="media-box">
-              <!-- You can replace with an image; leaving placeholder -->
-              <video playsinline autoplay loop muted>
-                    <source src="imgs/cte_genova_project.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="card-pad">
-              <div class="d-flex flex-wrap justify-content-between align-items-start gap-2">
-                <div>
-                  <div class="fw-bold fs-5">Autonomous Robotic 3D Artifact Scanning (CTE-Genova)</div>
-                  <div class="small-muted">Postdoc · CCHT, IIT Venice → Deployed at CTE-Genova</div>
-                </div>
-                <div class="pub-links">
-                  <a href="https://cte.comune.genova.it/">Project</a>
-                </div>
-              </div>
-
-              <p class="mt-3 mb-2">
-                Developed an autonomous scanning pipeline using UR manipulators and 3D sensing, including 6-DoF pose tracking for complex artifacts.
-                System delivered and deployed on-site.
-              </p>
-
-              <div class="mb-3">
-                <span class="tag">UR5e/UR3e</span><span class="tag">6-DoF Tracking</span><span class="tag">3D Scanning</span><span class="tag">Automation</span>
-              </div>
-
-              <div class="small-muted">
-                <!-- <strong>Note:</strong> keep restricted details as you already do; publish visuals only when allowed. -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4: Multimodal 3D Perception (PhD) -->
-        <div class="col-lg-6">
-          <div class="glass h-100">
-            <div class="media-box">
-              <div class="media-placeholder">[Placeholder: multimodal fusion diagram + qualitative detection]</div>
-            </div>
-            <div class="card-pad">
-              <div class="fw-bold fs-5">Multimodal 3D Scene Perception (PhD Work)</div>
-              <div class="small-muted">PAVIS, IIT · Thesis: Multimodal 3D Scene Perception</div>
-
-              <p class="mt-3 mb-2">
-                Research on LiDAR–camera fusion and multi-view 3D understanding for robust scene perception and object localization.
-              </p>
-
-              <div class="mb-3">
-                <span class="tag">LiDAR–RGB fusion</span><span class="tag">3D Detection</span><span class="tag">Multi-view</span><span class="tag">Large-scale</span>
-              </div>
-
-              <div class="small-muted">
-                <!-- <strong>What to show here:</strong> one clean diagram + 2 qualitative results images (before/after). -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- PUBLICATIONS -->
-  <section id="publications">
-    <div class="container">
-      <h2 class="section-title">Publications</h2>
-      <p class="section-lead">
-        Peer-reviewed and preprint work across 3D perception, multimodal fusion, and robotics.
-      </p>
-
-      <div class="row g-3 mt-2">
-
-        <!-- 2025 arXiv Survey (from CV) -->
-        <div class="col-12">
-          <div class="pub-item">
-            <div class="row g-3 align-items-center">
-              <div class="col-lg-4">
-                <div class="media-box pub-media">
-                  <img src="imgs/fields2splats.png" alt="Fields2Splats figure">
-                </div>
-              </div>
-              <div class="col-lg-8">
-                <div class="pub-title">From Fields to Splats: A Cross-Domain Survey of Real-Time Neural Scene Representations</div>
-                <div class="pub-meta">arXiv 2025 · Javed Ahmad, et al.</div>
-                <div class="pub-links mt-2">
-                  <a href="https://www.arxiv.org/abs/2509.23555">[arXiv]</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- 2025 arXiv Heritage (from CV) -->
-        <div class="col-12">
-          <div class="pub-item">
-            <div class="row g-3 align-items-center">
-              <div class="col-lg-4">
-                <div class="media-box pub-media">
-                  <img src="imgs/handsfree.png" alt="Hands-Free figure">
-                </div>
-              </div>
-              <div class="col-lg-8">
-                <div class="pub-title">Hands-Free Heritage: Automated 3D Scanning for Cultural Heritage Digitization</div>
-                <div class="pub-meta">arXiv 2025 · Javed Ahmad, et al.</div>
-                <div class="pub-links mt-2">
-                  <a href="https://arxiv.org/abs/2510.04781">[arXiv]</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- AAPOE -->
-        <div class="col-12">
-          <div class="pub-item">
-            <div class="row g-3 align-items-center">
-              <div class="col-lg-4">
-                <div class="media-box pub-media">
-                    <img src="imgs/aapoe_setup.png" alt="AAPOE Setup figure">
-                </div>
-              </div>
-              <div class="col-lg-8">
-                <div class="pub-title">AAPOE: Automated Artifacts Position and Orientation Estimation in Cultural Heritage</div>
-                <div class="pub-meta">IEEE/ASME MESA 2024 · Javed Ahmad, et al.</div>
-                <div class="pub-links mt-2">
-                  <a href="https://ieeexplore.ieee.org/document/10704902">[Paper]</a>
-                  <a href="https://drive.google.com/file/d/1sH40aj5_DSdPzKM-3Iiiy_OLRj1Dwrjh/view">[Teaser]</a>
-                  <a href="https://docs.google.com/presentation/d/1M0Ux4FAmOuOk3rnylouWeYdZtPPxR-fE/edit">[Presentation]</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- mmFUSION -->
-        <div class="col-12">
-          <div class="pub-item">
-            <div class="row g-3 align-items-center">
-              <div class="col-lg-4">
-                <div class="media-box pub-media">
-                  <img src="imgs/mmfusion.png" alt="mmFUSION figure">
-                </div>
-              </div>
-              <div class="col-lg-8">
-                <div class="pub-title">mmFUSION: Multi-modal Fusion for 3D Object Detection</div>
-                <div class="pub-meta">arXiv 2023 · Javed Ahmad, Alessio Del Bue</div>
-                <div class="pub-links mt-2">
-                  <a href="https://arxiv.org/abs/2311.04058">[Paper]</a>
-                  <a href="https://docs.google.com/presentation/d/14Pi3Se1FFHXG2wP3QOKE09P9Vxhoicec/edit">[Presentation]</a>
-                  <span class="small-muted">Code available upon request.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Fashion Retrieval -->
-        <div class="col-12">
-          <div class="pub-item">
-            <div class="row g-3 align-items-center">
-              <div class="col-lg-4">
-                <div class="media-box pub-media">
-                  <img src="imgs/json_approach.png" alt="Fashion retrieval figure">
-                </div>
-              </div>
-              <div class="col-lg-8">
-                <div class="pub-title">Fill in the Blank for Fashion Complementary Outfit Product Retrieval</div>
-                <div class="pub-meta">Machine Vision and Applications (2023) · Author list incl. Javed Ahmad</div>
-                <div class="pub-links mt-2">
-                  <a href="https://link.springer.com/article/10.1007/s00138-022-01359-x">[Paper]</a>
-                  <a href="https://github.com/visum-summerschool/visum-competition2021">[Code]</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ICIAP -->
-        <div class="col-12">
-          <div class="pub-item">
-            <div class="row g-3 align-items-center">
-              <div class="col-lg-4">
-                <div class="media-box pub-media">
-                  <img src="imgs/iciap2021.png" alt="ICIAP 2022 figure">
-                </div>
-              </div>
-              <div class="col-lg-8">
-                <div class="pub-title">Multi-view 3D Object Localization from Street-Level Scenes</div>
-                <div class="pub-meta">ICIAP 2022 · Javed Ahmad, Matteo Toso, Matteo Taiana, Stuart James, Alessio Del Bue</div>
-                <div class="pub-links mt-2">
-                  <a href="https://link.springer.com/chapter/10.1007/978-3-031-06430-2_8">[Paper]</a>
-                  <a href="https://github.com/javi-99/Multi-view-3D-Objects-Localization-from-Street-level-Scenes">[Code]</a>
-                  <a href="https://docs.google.com/presentation/d/1FQcilkWd2onnH_whNc4Kb-wAGKRRF06R/edit">[Presentation]</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- BACKGROUND -->
-  <section id="background">
-    <div class="container">
-      <h2 class="section-title">Background</h2>
-      <p class="section-lead">
-        A quick snapshot of my trajectory across research and industry.
-      </p>
-
-      <div class="row g-4 mt-2">
-        <div class="col-lg-6">
-          <div class="glass card-pad h-100">
-            <div class="fw-bold mb-3"><i class="bi bi-briefcase"></i> Experience</div>
-            <div class="timeline">
-              <div class="tl-item">
-                <div class="tl-role">Computer Vision Researcher · DeepPlants (Rome)</div>
-                <div class="tl-when">Sep 2025 – Present</div>
-                <div class="small-muted">SLAM + 3D reconstruction pipelines for agricultural field analysis; autonomous drone missions and data workflows.</div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-role">Postdoctoral Researcher · IIT (ADVR & CCHT)</div>
-                <div class="tl-when">Feb 2024 – Aug 2025</div>
-                <div class="small-muted">3D Gaussian Splatting SLAM; autonomous robotic scanning for cultural heritage; 6-DoF tracking.</div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-role">PhD Researcher · IIT & UniGe (PAVIS)</div>
-                <div class="tl-when">Nov 2020 – Dec 2023</div>
-                <div class="small-muted">Multimodal 3D scene perception and multi-view 3D localization.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="glass card-pad h-100">
-            <div class="fw-bold mb-3"><i class="bi bi-tools"></i> Skills</div>
-            <div class="mb-2 small-muted">Core</div>
-            <div class="mb-3">
-              <span class="tag">Python</span><span class="tag">C++</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">Open3D</span><span class="tag">Viser</span>
-            </div>
-
-            <div class="mb-2 small-muted">Robotics</div>
-            <div class="mb-3">
-              <span class="tag">ROS 2</span><span class="tag">MoveIt 2</span><span class="tag">Pinocchio</span><span class="tag">UR-RTDE</span>
-              <span class="tag">PX4</span><span class="tag">MAVSDK</span><span class="tag">Gazebo SITL</span>
-            </div>
-
-            <div class="mb-2 small-muted">3D / Mapping</div>
-            <div>
-              <span class="tag">SLAM</span><span class="tag">COLMAP</span><span class="tag">NeRF</span><span class="tag">3D Gaussian Splatting</span>
-              <span class="tag">MMDetection3D</span>
-            </div>
-
-            <div class="divider"></div>
-            <div class="small-muted">
-             <!-- Want this to be more “engineering-focused”? Replace some tags with: testing, CI, profiling, logging, reproducibility. -->
-            </div>
-          </div>
+        <div class="actions">
+          <a class="button primary" href="mailto:javed.sial91@gmail.com">Email</a>
+          <a class="button" href="https://www.linkedin.com/in/javed-ahmad-4692384a/">LinkedIn</a>
+          <a class="button" href="docs/cv_JavedAHMAD.pdf" download="Javed_Ahmad_CV.pdf">Download CV</a>
         </div>
       </div>
+    </section>
+  </main>
 
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <p class="section-lead">
-        I’m open to collaboration across robotics, 3D perception, and product-oriented autonomous systems.
-      </p>
-
-      <div class="row g-3 mt-2">
-        <div class="col-lg-8">
-          <div class="glass card-pad">
-            <div class="fw-bold mb-2">Email</div>
-            <div class="small-muted mb-3">javed.sial91 (at) gmail (dot) com</div>
-
-            <div class="fw-bold mb-2">Links</div>
-            <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-ghost" href="https://github.com/javi-99"><i class="bi bi-github"></i> GitHub</a>
-              <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=FSBvCO4AAAAJ&hl=en"><i class="bi bi-mortarboard"></i> Google Scholar</a>
-              <a class="btn btn-ghost" href="https://linkedin.com/in/javed-ahmad-4692384a"><i class="bi bi-linkedin"></i> LinkedIn</a>
-              <a class="btn btn-ghost" href="https://twitter.com/javedsial91"><i class="bi bi-twitter-x"></i> Twitter/X</a>
-              <a class="btn btn-brand" href="docs/cv_javed_ahmad.pdf"><i class="bi bi-file-earmark-text"></i> CV</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="glass card-pad h-100">
-            <div class="fw-bold mb-2"><i class="bi bi-image"></i> Upcoming ...</div>
-            <div class="small-muted">
-              Flagship projects:
-              <ul class="mt-2 mb-0">
-                <li>TBA</li>
-                <li>TBA</li>
-                <li>TBA</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <footer>
-    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
-      <div>© <span id="year"></span> Javed Ahmad</div>
-      <div class="small-muted">Built with Bootstrap 5 · Hosted on GitHub Pages</div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Side-nav active section highlight
-    const sections = ["top","build","projects","venture","publications","background","contact"];
-    const sideLinks = Array.from(document.querySelectorAll(".side-link"));
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting){
-          sideLinks.forEach(a => a.classList.remove("active"));
-          const id = e.target.id || "top";
-          const link = sideLinks.find(a => a.getAttribute("href") === "#" + id);
-          if (link) link.classList.add("active");
-        }
-      });
-    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 });
-
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) obs.observe(el);
-    });
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <footer class="container site-footer">© Javed Ahmad</footer>
 </body>
 </html>
