@@ -18,8 +18,8 @@
     <nav class="container site-nav" aria-label="Main navigation">
       <a class="site-name" href="#top">Javed Ahmad</a>
       <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#build">Research</a>
+        <a href="#build">What I Build</a>
+        <a href="#projects">Flagship Systems</a>
         <a href="#publications">Publications</a>
         <a href="#background">Background</a>
         <a href="#contact">Contact</a>
@@ -27,13 +27,27 @@
     </nav>
   </header>
 
+  <nav class="section-nav" aria-label="On this page">
+    <a href="#top" aria-current="location">Top</a>
+    <a href="#build">What I Build</a>
+    <a href="#projects">Flagship Systems</a>
+    <a href="#publications">Publications</a>
+    <a href="#background">Background</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <main id="main" class="container">
-    <section id="top" class="hero panel" aria-labelledby="name">
-      <img class="portrait" src="imgs/portrait_javed.png" alt="Portrait of Javed Ahmad" width="200" height="200">
-      <div>
-        <h1 id="name">Javed Ahmad</h1>
-        <p class="hero-role">Computer Vision and Robotics Researcher</p>
-        <p class="affiliation">DeepPlants · Rome, Italy</p>
+    <section id="top" class="hero panel" aria-labelledby="profile-heading">
+      <div class="profile-photo">
+        <img class="portrait" src="imgs/portrait_javed.png" alt="Portrait of Javed Ahmad" width="200" height="200">
+        <div class="profile-tags">
+          <span>Rome, Italy</span>
+          <span>Robotics · 3D Vision</span>
+        </div>
+      </div>
+      <div class="profile-copy">
+        <h1 id="profile-heading">3D Vision &amp; Robotics Researcher</h1>
+        <p class="hero-role">Ph.D. · Computer Vision Researcher at DeepPlants</p>
         <p class="intro">
           I develop autonomous UAV perception systems for agricultural mapping, combining visual localization,
           SLAM, and dense 3D reconstruction. At the Italian Institute of Technology, I worked on 3D Gaussian
@@ -42,15 +56,53 @@
         </p>
         <div class="actions">
           <a class="button primary" href="docs/cv_JavedAHMAD.pdf" download="Javed_Ahmad_CV.pdf">Download CV</a>
-          <a class="button" href="https://scholar.google.com/citations?user=FSBvCO4AAAAJ&amp;hl=en">Google Scholar</a>
           <a class="button" href="https://github.com/javi-99">GitHub</a>
+          <a class="button" href="https://scholar.google.com/citations?user=FSBvCO4AAAAJ&amp;hl=en">Google Scholar</a>
           <a class="button" href="https://www.linkedin.com/in/javed-ahmad-4692384a/">LinkedIn</a>
+          <a class="button" href="#contact">Contact</a>
+        </div>
+        <div class="profile-details">
+          <div class="profile-facts">
+            <div class="panel card-copy">
+              <h2>Focus</h2>
+              <p>SLAM, dense 3D mapping, multimodal perception, and robotic autonomy.</p>
+            </div>
+            <div class="panel card-copy">
+              <h2>Highlights</h2>
+              <p>AgroMap3D accepted at WACV 2027. First prizes at VISUM 2021 and EEML 2020.</p>
+            </div>
+          </div>
+          <ul class="affiliation-logos" aria-label="Current and past affiliations">
+            <li><img class="brand-logo" src="imgs/deepplants_logo.png" alt="DeepPlants" width="244" height="244"></li>
+            <li><img class="brand-logo brand-logo-dark" src="imgs/logo_advr.png" alt="IIT Advanced Robotics" width="1000" height="243"></li>
+            <li><img class="brand-logo" src="imgs/Logo-IIT_CaFoscari.png" alt="IIT Center for Cultural Heritage Technology" width="1000" height="261"></li>
+            <li><img class="brand-logo" src="imgs/pavis_logo.jpeg" alt="IIT Pattern Analysis and Computer Vision" width="800" height="213"></li>
+            <li><img class="brand-logo" src="imgs/Unige-logo.png" alt="University of Genoa"></li>
+          </ul>
         </div>
       </div>
     </section>
 
+    <section id="build" aria-labelledby="research-heading">
+      <h2 id="research-heading">Research Areas</h2>
+      <div class="research-grid">
+        <article class="panel card-copy">
+          <h3>3D Mapping and Reconstruction</h3>
+          <p>Visual localization, SLAM, structure from motion, and neural scene representations for field-scale mapping and real-time visualization.</p>
+        </article>
+        <article class="panel card-copy">
+          <h3>Robotic Perception and Autonomy</h3>
+          <p>UAV sensing and mission control, 6-DoF object pose estimation, robot motion planning, and automated 3D scanning.</p>
+        </article>
+        <article class="panel card-copy">
+          <h3>Multimodal 3D Vision</h3>
+          <p>Learning-based fusion of camera and LiDAR data for 3D detection, and geometric methods for object localization across multiple views.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Selected Projects</h2>
+      <h2 id="projects-heading">Flagship Systems</h2>
       <article id="agromap3d" class="panel featured">
         <div class="featured-copy">
           <div class="project-logos">
@@ -111,24 +163,6 @@
             <p class="project-summary">LiDAR–camera fusion for 3D object detection.</p>
             <a href="#mmfusion">mmFUSION publication</a>
           </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="build" aria-labelledby="research-heading">
-      <h2 id="research-heading">Research Areas</h2>
-      <div class="research-grid">
-        <article class="panel card-copy">
-          <h3>3D Mapping and Reconstruction</h3>
-          <p>Visual localization, SLAM, structure from motion, and neural scene representations for field-scale mapping and real-time visualization.</p>
-        </article>
-        <article class="panel card-copy">
-          <h3>Robotic Perception and Autonomy</h3>
-          <p>UAV sensing and mission control, 6-DoF object pose estimation, robot motion planning, and automated 3D scanning.</p>
-        </article>
-        <article class="panel card-copy">
-          <h3>Multimodal 3D Vision</h3>
-          <p>Learning-based fusion of camera and LiDAR data for 3D detection, and geometric methods for object localization across multiple views.</p>
         </article>
       </div>
     </section>
@@ -318,5 +352,30 @@
   </main>
 
   <footer class="container site-footer">© Javed Ahmad</footer>
+  <script>
+    const sectionLinks = [...document.querySelectorAll(".section-nav a")];
+    const sections = sectionLinks.map(link => document.querySelector(link.hash));
+    const header = document.querySelector(".site-header");
+    let activeLink = sectionLinks[0];
+
+    function updateSectionNav() {
+      const activationLine = header.getBoundingClientRect().bottom + 36;
+      const atBottom = window.scrollY > 0 &&
+        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+      const index = atBottom ? sections.length - 1 :
+        sections.findLastIndex(section => section.getBoundingClientRect().top <= activationLine);
+      const nextLink = sectionLinks[Math.max(0, index)];
+
+      if (nextLink === activeLink) return;
+      activeLink.removeAttribute("aria-current");
+      nextLink.setAttribute("aria-current", "location");
+      activeLink = nextLink;
+    }
+
+    window.addEventListener("scroll", updateSectionNav, { passive: true });
+    window.addEventListener("resize", updateSectionNav);
+    window.addEventListener("load", updateSectionNav, { once: true });
+    updateSectionNav();
+  </script>
 </body>
 </html>
